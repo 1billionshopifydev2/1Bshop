@@ -1,0 +1,75 @@
+
+@page {
+  size: A4;
+  margin: 5rem auto;
+}
+
+html.print-page {
+  font-size: 26px;
+  -webkit-text-size-adjust: 100%;
+
+  body {
+    font-family: Graphik Web, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    font-size: 13px;
+  }
+
+  #___gatsby,
+  #___gatsby > div {
+    height: 100%;
+  }
+
+  body,
+  h1 {
+    line-height: 1rem;
+  }
+
+  h1 {
+    font-weight: 500;
+    font-size: 1rem;
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 14px;
+  }
+  h4 {
+    font-weight: 500;
+    font-size: 1em;
+  }
+  h2,
+  h4 {
+    line-height: 1rem;
+  }
+
+  @media (min-width: 1400px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+      max-width: 1140px;
+    }
+  }
+
+  hr {
+    opacity: 1;
+  }
+  .border-dark {
+    border-color: #343a40;
+  }
+
+  .lead {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  ul {
+    padding-left: 40px;
+    list-style-type: disc;
+  }
+
+  .fs-13 * {
+    font-size: 13px !important;
+  }
+}

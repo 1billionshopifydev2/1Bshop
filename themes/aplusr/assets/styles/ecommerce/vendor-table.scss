@@ -1,0 +1,111 @@
+#vendor-table {
+    overflow-x: scroll;
+    h1 {
+        padding-top: 50vh;
+        margin-top: -20px;
+        text-align: center;
+        pointer-events: none;
+        cursor: not-allowed;
+        padding-right: 24px;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            margin-top: -16px;
+            margin-left: 130px;
+            width: 24px;
+            height: 24px;
+            border: 2px solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s;
+            animation: 0.8s linear infinite rotate;
+            transition-delay: 0.5s;
+            transition-duration: 1s;
+            opacity: 1;
+          }
+    }
+    .btn {
+        padding: 3px 6px;
+        margin-top: 6px;
+        float: right;
+        margin-right: -95px;
+        position: relative;
+        &:focus {
+            box-shadow: none;
+        }
+        &:before {
+          content: '';
+          position: absolute;
+          right: 2px;
+          top: 50%;
+          margin-top: -9px;
+          width: 18px;
+          height: 18px;
+          border: 2px solid;
+          border-left-color: transparent;
+          border-right-color: transparent;
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity 0.5s;
+          animation: 0.8s linear infinite rotate;
+        }
+        &.sending{
+            pointer-events: none;
+            cursor: not-allowed;
+            padding-right: 24px;
+            background: #666;
+            border-color: #666d;
+            &:before {
+              transition-delay: 0.5s;
+              transition-duration: 1s;
+              opacity: 1;
+            }
+          }
+    }
+    table {
+        position: relative;
+        thead {
+            tr {
+                .table-danger {
+                    background: #ffc9c9;
+                    color: #580000;
+                    border-color: #580000;
+                    padding: 10px 15px;
+                }
+                > th {
+                    position: sticky;
+                    top: 0;
+                    background: #f1f1f1;
+                    z-index: 100;
+                    padding-right: 105px;
+                }
+            }
+        }
+        tbody {
+            th {
+                position: sticky;
+                left: 0;
+                background: #f1f1f1;
+            }
+        }
+        th, td {
+            white-space: nowrap;
+            border: 1px solid #e0e0e0;
+            padding: 2px 4px;
+        }
+        td {
+            vertical-align: top;
+        }
+    }
+}
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

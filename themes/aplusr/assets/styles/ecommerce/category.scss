@@ -1,0 +1,45 @@
+.sort a[aria-expanded='false']::after {
+  content: '+';
+}
+.sort a[aria-expanded='true']::after {
+  content: '-';
+}
+
+.dropdown-sort-container{
+  position: relative;
+}
+
+.dropdown-title{
+  font-weight: normal;
+}
+
+.dropdown-sort {
+  position: absolute;
+  background: white;
+  margin-bottom: 1rem;
+  list-style: none;
+  border: 1px solid #ebebeb;
+  padding: 0;
+  min-width: 170px;
+  top: 0.5rem;
+  z-index:10;
+
+  input[type='radio'] {
+    display: none;
+  }
+}
+
+.dropdown-sort-item{
+  text-align: center;
+  padding: 0.3rem 1rem;
+}
+
+.dropdown-sort-item:not(.dropdown-sort-selected):hover{
+  background:#f8f9fa;
+  cursor: pointer;
+}
+
+.dropdown-sort-selected{
+  background: #000;
+  color: #fff;
+}

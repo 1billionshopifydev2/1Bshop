@@ -1,0 +1,17 @@
+.hero__content {
+  height: 85%;
+
+  @include media-breakpoint-down(lg) {
+    height: fit-content;
+  }
+
+  .hero__headline {
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 40px;
+  }
+  
+  .hero__headline + p {
+    font-weight: 500;
+  }
+}

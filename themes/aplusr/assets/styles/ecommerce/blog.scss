@@ -1,0 +1,49 @@
+.blog-page {
+  .pagination {
+    transform: unset;
+    justify-content: center;
+  }
+}
+/* BLOG CARD */
+.card-banner.blog {
+  p {
+    min-height: 10rem;
+    text-align: justify;
+  }
+
+  h3:hover,
+  span:hover {
+    text-decoration: underline;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+.blog-card__image {
+  img {
+    width: auto;
+  }
+}
+
+.card-banner.blog {
+  .card-image {
+    min-height: 17.5rem;
+  }
+}
+
+/* BLOG CONTENT */
+.page-single-blog {
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .blog-content {
+    h2 {
+      color: var(--gray-color);
+      font-size: 25px;
+    }
+  }
+}

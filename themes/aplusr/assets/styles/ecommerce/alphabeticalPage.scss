@@ -1,0 +1,61 @@
+.designers-appendix {
+  position: relative;
+
+  .container2 {
+    display: grid;
+    grid-template-columns: 1% 99%;
+    min-height: 70vh;
+    
+    .appendix {
+      column-count: 4;
+      position: relative;
+
+      .linkedLetter {
+        transform: translateY( -6rem );
+      }
+  
+      p {
+        font-family: 'Graphik Web' , sans-serif;
+        line-height: 1rem;
+        font-size: 12px;
+        color: #000;
+        padding: 0;
+        margin: 0;
+      }
+    }
+  
+    .alphabet {
+      position: sticky;
+      left: 1.5rem;
+      top: 27%;
+      height: fit-content;
+    
+      a {
+        display: inline;
+        text-decoration: none;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+  .designers-appendix {
+    
+    .container2 {
+      display: flex;
+      margin: 0 15px;
+
+      .appendix {
+        column-count: 2;
+      }
+      
+      .alphabet {
+        display: none !important;
+      }
+    }
+
+  }
+}
