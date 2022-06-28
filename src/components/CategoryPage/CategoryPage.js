@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 
 import categoryCore from './CategoryCore'
 
@@ -9,6 +8,7 @@ const CategoryPageTmpl = require(`../../../themes/${process.env.B2S_THEME_NAME}/
 
 const CategoryPage = ({ location, data, pageContext }) => {
   const Component = categoryCore(data, pageContext, location)(CategoryPageTmpl)
+
   return <Component />
 }
 

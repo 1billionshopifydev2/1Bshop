@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React from 'react'
 import { Helmet } from 'react-helmet'
 
@@ -15,7 +13,7 @@ const LayoutTmpl = (props) => (
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "A+R",
+              "name": "B2Storefront",
               "url": "${process.env.GATSBY_SHOP_URL}",
               "description": "${props.description}",
               "logo": "${process.env.GATSBY_SHOP_URL}/images/arLogo.jpeg",
@@ -31,18 +29,9 @@ const LayoutTmpl = (props) => (
       ]}
     />
     <Components.ErrorBoundary>
-      <div id="stage">
-        <Components.HeaderDesktopCore isMenuOpen={props.isMenuOpen} menuItems={props.menuData} />
-        <main className='site__body page'>
-          {props.children}
-        </main>
-        <Components.FooterCore renderNewsletter={props.renderNewsletter} />
-        <div id="b2storefront-helper" style={{display: 'none'}}>
-          BUILD_MODE: {process.env.GATSBY_BUILD_MODE}
-        </div>
-      </div>
-      <Components.MobileSidebar menuItems={props.menuData} />
-      <div className="modal-backdrop fade" style={{ display: 'none' }} />
+      <Components.Header isMenuOpen={props.isMenuOpen} menuItems={props.menuData} />
+      {props.children}
+      <Components.Footer renderNewsletter={props.renderNewsletter} />
     </Components.ErrorBoundary>
   </>
 )

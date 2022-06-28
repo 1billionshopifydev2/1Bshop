@@ -37,9 +37,4 @@ export {
   PaginatedList,
   CategroyListTmpl,
   ProductFilterTmpl,
-  // RenderIfPathExists,
-  // CategoryViewOptions,
-  // FilterByPrice,
-  // FilterByBrand,
-  // FilterByOptions,
 }

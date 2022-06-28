@@ -5,7 +5,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: 'B2Storefront Demo',
+    title: 'B2Storefront Shopify Boilerplate',
     description: '',
     author: 'b2storefront',
   },
