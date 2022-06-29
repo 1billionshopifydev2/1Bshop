@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import categoryCore from './CategoryCore'
 
 const CategoryPageTmpl = require(`../../../themes/${process.env.B2S_THEME_NAME}/CategoryPage/CategoryPageTmpl`)

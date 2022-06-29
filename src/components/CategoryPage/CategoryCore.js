@@ -3,7 +3,6 @@ import Link from '@b2s_core/src/utils/Link'
 
 import { Layout } from '../../layouts'
 import SEO from '@b2s_core/src/components/seo'
-import { PaginatedList } from '../Shared/PaginatedList/PaginatedList'
 import { priceFormatter, resizedImgURL } from '@b2s_core/src/utils/helpers'
 import useCategoryCore from '@b2s_core/src/components/CategoryPage/useCategoryCore'
 
@@ -34,7 +33,6 @@ export {
   Link,
   Layout,
   SEO,
-  PaginatedList,
   CategroyListTmpl,
   ProductFilterTmpl,
 }

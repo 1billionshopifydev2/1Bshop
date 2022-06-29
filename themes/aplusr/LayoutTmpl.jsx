@@ -1,5 +1,8 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
+import ErrorBoundary from '@b2s_core/src/components/ErrorBoundary'
+import { Footer } from '../../src/components/Footer'
+import { Header } from '../../src/components/Header'
 
 import * as Components from '../../src/layouts'
 
@@ -28,11 +31,11 @@ const LayoutTmpl = (props) => (
         },
       ]}
     />
-    <Components.ErrorBoundary>
-      <Components.Header isMenuOpen={props.isMenuOpen} menuItems={props.menuData} />
+    <ErrorBoundary>
+      <Header isMenuOpen={props.isMenuOpen} menuItems={props.menuData} />
       {props.children}
-      <Components.Footer renderNewsletter={props.renderNewsletter} />
-    </Components.ErrorBoundary>
+      <Footer renderNewsletter={props.renderNewsletter} />
+    </ErrorBoundary>
   </>
 )
 

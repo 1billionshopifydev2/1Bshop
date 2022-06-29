@@ -10,10 +10,6 @@ import { createCheckout, refreshCheckout, recoverCheckout } from '@b2s_core/src/
 import { initializeSession } from '@b2s_core/src/reducers/session'
 import { setToken } from '@b2s_core/src/utils/session'
 
-import { HeaderDesktopCore } from '../components/HeaderDesktopCore'
-import { FooterCore } from '../components/FooterCore'
-import { MobileSidebar } from '../components/MobileSidebar'
-
 const LayoutTmpl =
   require(`@themes/${process.env.B2S_THEME_NAME}/LayoutTmpl`).default
 
@@ -58,11 +54,7 @@ const Layout = ({children}) => {
     children,
   }
   
-  return (
-    <div>
-      <LayoutTmpl {...ownProps} />
-    </div>
-  )
+  return (<LayoutTmpl {...ownProps} />)
 }
 
 Layout.propTypes = {
@@ -77,4 +69,4 @@ Layout.defaultProps = {
   isMenuOpen: false,
 }
 
-export { Layout, ErrorBoundary, HeaderDesktopCore, FooterCore, MobileSidebar }
+export { Layout }

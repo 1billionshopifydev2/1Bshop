@@ -1,22 +1,15 @@
-/* eslint-disable */
-
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-
 import { productDetailsCore } from './ProductDetailsCore'
 
 const ProductDetailsTmpl =
-  require(`@themes/${process.env.B2S_THEME_NAME}/ProductDetailsTmpl`).default
+  require(`@themes/${process.env.B2S_THEME_NAME}/ProductDetailsPage/ProductDetailsPageTmpl`).default
 
 const ProductDetailsPage = ({ location, data, pageContext }) => {
-  const product = { ...pageContext.product }
-
   const Component = productDetailsCore(
     location,
-    product,
+    pageContext.product,
     data,
-    pageContext.upholsteries
   )(ProductDetailsTmpl)
 
   return <Component />
