@@ -1,11 +1,17 @@
-import { string } from 'prop-types';
+import { number, string } from 'prop-types';
 
 const ProductVariantType = {
+    id: string,
     sku: string,
+    title: string,
+    price: number,
 }
 
 const ProductVariantTypeDefaultValues = {
-    sku: ''
+    id: '',
+    sku: '',
+    title: '',
+    price: '',
 }
 
 export {

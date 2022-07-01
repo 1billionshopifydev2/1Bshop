@@ -3,6 +3,7 @@ const useProductDetailsCore = ({
   product,
 }) => {
   console.log(product)
+  
   return {
     product,
   }
