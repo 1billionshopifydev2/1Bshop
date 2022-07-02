@@ -62,7 +62,7 @@ module.exports = {
     },
     'import/resolver': {
       alias: [
-        ['@themes', './themes'],
+        ['@themes', './@themes/'],
         ['@b2s_core', './src/b2s_core/src'],
       ],
     },

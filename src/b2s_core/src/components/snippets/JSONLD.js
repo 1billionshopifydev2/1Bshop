@@ -33,6 +33,21 @@ export const JSONLD = ({ type, data }) => {
                     `}</script>
                 </Helmet>
             )
+        case JSONLD_SHOP:
+            return (
+                <Helmet>
+                    <script type="application/ld+json">{`
+                        {
+                            "@context": "https://schema.org",
+                            "@type": "Organization",
+                            "name": "${process.env.GATSBY_SHOP_NAME}",
+                            "url": "${process.env.GATSBY_SHOP_URL}",
+                            "description": "${process.env.GATSBY_SHOP_DESCRIPTION}",
+                            "logo": "${process.env.GATSBY_SHOP_URL}/images/logo.jpg",
+                          }
+                    `}</script>
+                </Helmet>
+            )
         default:
             return (<></>)
     }

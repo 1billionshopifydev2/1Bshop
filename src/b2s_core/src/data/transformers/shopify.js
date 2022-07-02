@@ -16,10 +16,10 @@ const transformProduct = (shopifyProduct) => {
     product.variants = reduceEdgeNode(shopifyProduct.variants).map(variant => transformVariant(variant))
     product.variant = transformVariant(product.variants[0])
     product.slug = shopifyProduct.handle
-    product.price = priceRange?.minVariantPrice.amount || 0
+    product.price = parseFloat(priceRange?.minVariantPrice.amount) || 0
     product.prices = {
-        min: priceRange?.minVariantPrice.amount || 0,
-        max: priceRange?.maxVariantPrice.amount || 0,
+        min: parseFloat(priceRange?.minVariantPrice.amount) || 0,
+        max: parseFloat(priceRange?.maxVariantPrice.amount) || 0,
         old_min: Math.min(...reduceEdgeNode(shopifyProduct.variants).map(variant => variant.compareAtPrice)),
         old_max: Math.max(...reduceEdgeNode(shopifyProduct.variants).map(variant => variant.compareAtPrice)),
     }
@@ -41,7 +41,7 @@ const transformVariant = (shopifyVariant) => {
     variant.id = convertIDToNumber(shopifyVariant.id)
     variant.sku = shopifyVariant.sku
     variant.title = shopifyVariant.title
-    variant.price = shopifyVariant.price
+    variant.price = parseFloat(shopifyVariant.price)
 
     return variant
 }

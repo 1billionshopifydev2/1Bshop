@@ -76,7 +76,7 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-/themes/ecommerce-bootstrap
+/@themes/ecommerce-bootstrap
 
 # Editors
 .vscode/

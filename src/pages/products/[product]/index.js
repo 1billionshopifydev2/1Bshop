@@ -2,32 +2,30 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { productDetailsCore } from '../../../components/ProductDetailsPage/ProductDetailsCore'
 import { buildRequest } from '../../../../plugins/gatsby-b2s-shopify/utils'
 import axios from 'axios'
 import productByHandleQuery from '../../../../plugins/gatsby-b2s-shopify/queries/product-by-handle'
 import { transformProduct } from '@b2s_core/src/data/transformers/shopify'
+import useProductDetailsCore from '@b2s_core/src/components/ProductDetails/useProductDetailsCore'
 
-const ProductDetailsTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/ProductDetailsPage/ProductDetailsPageTmpl`).default
+const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/ProductPageTmpl`).default
 
-const ProductDetailsPageSSR = ({ location, serverData }) => {
-  console.log(serverData.product)
-  
-  const Component = productDetailsCore(
+const ProductPageSSR = ({ location, serverData }) => {
+  const ownProps = useProductDetailsCore({
     location,
-    serverData.product
-  )(ProductDetailsTmpl)
+    product: serverData.product,
+  })
 
-  return <Component />
+  return <ProductPageTmpl {...ownProps} />
 }
 
-ProductDetailsPageSSR.propTypes = {
+ProductPageSSR.propTypes = {
   data: PropTypes.object,
   location: PropTypes.object,
   pageContext: PropTypes.object,
 }
 
-ProductDetailsPageSSR.defaultProps = {
+ProductPageSSR.defaultProps = {
   data: {},
   location: {},
 }

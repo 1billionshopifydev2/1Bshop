@@ -1,11 +1,7 @@
 import React from 'react'
 import { navigate } from 'gatsby'
-import Link from '@b2s_core/src/utils/Link'
 
-
-import SEO from '@b2s_core/src/components/seo'
-
-const Page404Tmpl = require(`../../themes/${process.env.B2S_THEME_NAME}/404Tmpl`)
+const Page404Tmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/404Tmpl`)
   .default
 
 const NotFoundPage = ({ location }) => {
@@ -33,4 +29,3 @@ const NotFoundPage = ({ location }) => {
 }
 
 export default NotFoundPage
-export { SEO, Link }

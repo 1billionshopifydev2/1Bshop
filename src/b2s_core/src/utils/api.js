@@ -1,10 +1,10 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: `https://${process.env.SHOP_NAME}.myshopify.com/api/2021-04/graphql`,
+  baseURL: `https://${process.env.SHOPIFY_SHOP_NAME}.myshopify.com/api/2021-04/graphql`,
   headers: {
     Accept: 'application/json',
-    'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_ACCESS_TOKEN,
+    'X-Shopify-Storefront-Access-Token': process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
   },
 })
 

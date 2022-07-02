@@ -70,12 +70,14 @@ export const initializeSession = () => {
         type: INITIALIZE_SESSION.FULFILLED,
         payload: {
           ...res.data.customer,
-          addresses: res.data.customer.addresses.edges.map((edge) => edge.node),
-          orders: res.data.customer.orders.edges.map((edge) => edge.node),
+          addresses: res.data.customer ? res.data.customer.addresses.edges.map((edge) => edge.node) : [],
+          orders: res.data.customer ? res.data.customer.orders.edges.map((edge) => edge.node) : [],
         },
       })
 
-      dispatch(getWishlist())
+      if (res.data.customer) {
+        dispatch(getWishlist())
+      }
     } catch (e) {
       console.error(e)
       dispatch({ type: INITIALIZE_SESSION.REJECTED })

@@ -1,7 +1,0 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-npx husky-check-email @b2storefront.com
-npx lint-staged
-npx lint-staged
-

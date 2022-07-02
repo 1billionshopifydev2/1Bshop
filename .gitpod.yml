@@ -1,12 +1,10 @@
 tasks:
-  - init: nvm install 16 && nvm use 16 && yarn install
-    command: nvm install 16 && nvm use 16 && yarn install && yarn develop
-  - before: printf "\n[settings]\napi_key = $WT_API_KEY\n" > ~/.wakatime.cfg && clear
+  - init: nvm install 16.15 && nvm use 16.15 && yarn install
+    command: nvm install 16.15 && nvm use 16.15 && yarn install && yarn preview
 vscode:
   extensions:
     - GraphQL.vscode-graphql
     - kumar-harsh.graphql-for-vscode
-    - wakatime.vscode-wakatime
     - dsznajder.es7-react-js-snippets
     - esbenp.prettier-vscode
     - dbaeumer.vscode-eslint

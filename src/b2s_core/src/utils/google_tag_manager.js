@@ -1,4 +1,4 @@
-import { loadHeadScript, loadHeadScriptContent } from './helpers'
+import { loadHeadScriptContent } from './helpers'
 
 export const trackEvent = (eventName, info) => {
   if (typeof window === 'undefined') {
@@ -14,9 +14,9 @@ export const trackEvent = (eventName, info) => {
   }
 }
 
-export const init = async (gtmID, gaID) => {
+export const init = async (gtmID) => {
   if (typeof document !== 'undefined' && document.body) {
-    document.body.insertAdjacentHTML('afterbegin', '<noscript><iframe src={`https://www.googletagmanager.com/ns.html?id=${gtmID}`} height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>')
+    document.body.insertAdjacentHTML('afterbegin', `<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${gtmID}" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>`)
   }
 
   await loadHeadScriptContent(
@@ -29,14 +29,6 @@ export const init = async (gtmID, gaID) => {
       d.dispatchEvent(_ge);
     });f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','${gtmID}');`
-  )
-  await loadHeadScript(`https://www.googletagmanager.com/gtag/js?id=${gaID}`)
-  await loadHeadScriptContent(
-    'b2s_ga',
-    `window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${gaID}');`
   )
 }
 

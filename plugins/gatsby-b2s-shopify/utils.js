@@ -156,9 +156,9 @@ const buildRequest = ({ query, variables = {}, isBulk = false }) => {
 
   const config = {
     method: 'post',
-    url: process.env.SHOPIFY_GRAPHQL_ENDPOINT,
+    url: `https://${process.env.SHOPIFY_SHOP_NAME}.myshopify.com/admin/api/2022-04/graphql.json`,
     headers: {
-      'X-Shopify-Access-Token': isBulk ? process.env.SHOPIFY_SHOP_PASSWORD_BULK : process.env.SHOPIFY_SHOP_PASSWORD,
+      'X-Shopify-Access-Token': isBulk ? process.env.SHOPIFY_ADMIN_ACCESS_TOKEN_BULK : process.env.SHOPIFY_ADMIN_ACCESS_TOKEN,
       'Content-Type': 'application/json',
       Cookie: 'request_method=POST',
     },

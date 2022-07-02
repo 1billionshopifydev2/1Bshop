@@ -5,8 +5,8 @@ function Client() {
   let instance
   function createInstance() {
     const instanceParams = {
-      storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
-      domain: process.env.CHECKOUT_DOMAIN,
+      storefrontAccessToken: process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN,
+      domain: process.env.SHOPIFY_ORIGINAL_DOMAIN,
     }
     let newInstance
     if (
