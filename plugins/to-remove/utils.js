@@ -1,30 +1,16 @@
 const path = require('path')
 const dotEnv = require('dotenv')
-const axios = require('axios')
 const fetch = require('node-fetch')
 const { createInterface } = require('readline')
-const { productFormatter } = require('../../src/utils/product-formatter')
+const { transformProduct } = require('@b2storefront/b2s_core/dist/data/transformers/shopify')
 
 dotEnv.config({
   path: path.join(__dirname, '../../', `.env.${process.env.NODE_ENV}`),
 })
 
-const { STRAPI_URL } = process.env
-
-const fetchFromStrapi = (apiId) => axios.get(`${STRAPI_URL}/${apiId}`)
-
-const fetchByScrapeStack = async (url) => {
-  let params = {
-    url: url,
-    access_key: process.env.GATSBY_SCRAPERSTACK_ACCESS_KEY,
-    render_js: 0
-  }
-
-  return await axios.get(`https://api.scrapestack.com/scrape`, {params})
-}
-
-const serializeCollection = async (collections, url) => {
+const serializeCollection = async (url) => {
   const result = await fetch(url)
+  const collections = []
   const rl = createInterface({
     input: result.body,
     crlfDelay: Infinity,
@@ -37,11 +23,6 @@ const serializeCollection = async (collections, url) => {
       if (collection.id) {
         const isCollection = collection.id.includes('/shopify/Collection/')
         const isProduct = collection.id.includes('/shopify/Product/')
-        const isImage = collection.id.includes('/shopify/ProductImage/')
-
-        if (isImage) {
-          continue
-        }
 
         if (isProduct) {
           const collectionIndex = collections.findIndex(
@@ -75,16 +56,9 @@ const serializeCollection = async (collections, url) => {
   return collections
 }
 
-const serializeProducts = async (products, url) => {
+const serializeProducts = async (url) => {
   const result = await fetch(url)
-
-  console.log('Bulk downloaded')
-  console.log(result)
-
-  const strapi = await fetchFromStrapi('product-templates')
-  const vendors = strapi.data.map(({ vendor }) => vendor)
-
-  console.log('Strapi data downloaded')
+  const products = []
 
   const rl = createInterface({
     input: result.body,
@@ -135,7 +109,7 @@ const serializeProducts = async (products, url) => {
 
       if (isProduct) {
         const context = {
-          product: productFormatter(product),
+          product: product,
           images: [],
           variants: [],
         }
@@ -145,10 +119,16 @@ const serializeProducts = async (products, url) => {
     }
   }
 
-  return products
+  const transformedProducts = []
+
+  for (let shopifyProduct of Object.values(products)) {
+    transformedProducts.push(transformProduct(shopifyProduct.product))
+  }
+
+  return transformedProducts
 }
 
-const buildRequest = ({ query, variables = {}, isBulk = false }) => {
+const buildRequest = ({ query, variables = {} }) => {
   const data = JSON.stringify({
     query: query,
     variables: variables,
@@ -158,7 +138,7 @@ const buildRequest = ({ query, variables = {}, isBulk = false }) => {
     method: 'post',
     url: `https://${process.env.SHOPIFY_SHOP_NAME}.myshopify.com/admin/api/2022-04/graphql.json`,
     headers: {
-      'X-Shopify-Access-Token': isBulk ? process.env.SHOPIFY_ADMIN_ACCESS_TOKEN_BULK : process.env.SHOPIFY_ADMIN_ACCESS_TOKEN,
+      'X-Shopify-Access-Token': process.env.SHOPIFY_ADMIN_ACCESS_TOKEN,
       'Content-Type': 'application/json',
       Cookie: 'request_method=POST',
     },
@@ -168,33 +148,7 @@ const buildRequest = ({ query, variables = {}, isBulk = false }) => {
   return config
 }
 
-const getLatestBulkApi = async () => {
-  return axios(
-    'https://5hcuazyufe.execute-api.us-east-1.amazonaws.com/get-bulk-ids'
-  )
-}
-
 function addProductsToCollections(allCollections, allProducts) {
-  if (process.env.GATSBY_PARTIAL_BUILD) {
-    return allCollections.map((collection) => {  
-      const collectionContext = {
-        ...collection,
-        products: allProducts
-          .map(({ product }) => {
-            return {
-              ...product,
-              images: product.images.map(image => ({
-                ...image,
-                altText: image.altText || 'dummy'
-              })),
-              variants: product.variants,
-            }
-          })
-      }
-      return collectionContext
-    })
-  }
-
   return allCollections.map((collection) => {
     const collectionsProducts = collection?.products ?? []
 
@@ -202,16 +156,11 @@ function addProductsToCollections(allCollections, allProducts) {
       ...collection,
       products: collectionsProducts
         .map((product) => {
-          const p = allProducts.find((p) => p.product.id === product.id) ?? []
-          const images = p?.product?.images ?? []
-          const variants = p?.product?.variants ?? []
+          const p = allProducts.find((p) => p.id === product.id) ?? []
           return {
-            ...product,
-            images: images.slice(0, 1),
-            variants,
+            ...p,
           }
-        })
-        .filter((product) => product.images.length > 0),
+        }),
     }
     return collectionContext
   })
@@ -224,10 +173,7 @@ const wait = async (delay = 27000) => {
 module.exports = {
   serializeProducts,
   serializeCollection,
-  fetchFromStrapi,
-  getLatestBulkApi,
   buildRequest,
   wait,
-  fetchByScrapeStack,
   addProductsToCollections
 }

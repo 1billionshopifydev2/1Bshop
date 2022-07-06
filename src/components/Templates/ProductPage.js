@@ -7,7 +7,7 @@ const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates
 const ProductDetailsPage = ({ location, data, pageContext }) => {
   const ownProps = useProductDetailsCore({
     location,
-    product,
+    product: pageContext.product,
   })
 
   return <ProductPageTmpl {...ownProps} />

@@ -2,9 +2,9 @@
 
 import React from 'react'
 import PropTypes from 'prop-types'
-import { buildRequest } from '../../../../plugins/gatsby-b2s-shopify/utils'
+import { buildRequest } from '@b2storefront/gatsby-b2storefront-shopify/utils'
 import axios from 'axios'
-import productByHandleQuery from '../../../../plugins/gatsby-b2s-shopify/queries/product-by-handle'
+import productByHandleQuery from '@b2storefront/gatsby-b2storefront-shopify/queries/product-by-handle'
 import { transformProduct } from '@b2storefront/b2s_core/dist/data/transformers/shopify'
 import useProductDetailsCore from '@b2storefront/b2s_core/dist/components/ProductDetails/useProductDetailsCore'
 

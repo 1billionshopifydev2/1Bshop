@@ -14,11 +14,7 @@ const plugins = [
       folders: [`/@themes/${process.env.B2S_THEME_NAME}/Assets`],
     },
   },
-  {
-    resolve: require.resolve(
-      `${__dirname}/plugins/gatsby-b2s-shopify/gatsby-node.js`
-    ),
-  },
+  '@b2storefront/gatsby-b2storefront-shopify',
   {
     resolve: 'gatsby-plugin-root-import',
     options: {
