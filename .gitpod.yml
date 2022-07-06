@@ -1,5 +1,5 @@
 tasks:
-  - init: nvm install 16.15 && nvm use 16.15
+  - init: nvm install 16.15 && nvm use 16.15 && npm adduser
     command: nvm install 16.15 && nvm use 16.15 && yarn install && yarn preview
 vscode:
   extensions:
