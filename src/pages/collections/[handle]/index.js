@@ -6,14 +6,16 @@ import { buildRequest } from '../../../../plugins/gatsby-b2s-shopify/utils'
 import axios from 'axios'
 import collectionWithProductsByHandleQuery from '../../../../plugins/gatsby-b2s-shopify/queries/collection-with-products-by-handle'
 import { productFormatter } from '../../../utils/product-formatter'
-import categoryCore from '../../../components/CategoryPage/CategoryCore'
+import useCategoryCore from '@b2storefront/b2s_core/dist/components/CategoryPage/useCategoryCore'
 
-const CategoryPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/CategoryPage/CategoryPageTmpl`)
+const CategoryPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/CategoryPageTmpl`)
   .default
 
 const CategoryPageSSR = ({ location, data, serverData }) => {
-  const Component = categoryCore(data, serverData.collection, location)(CategoryPageTmpl)
-  return <Component />
+  const ownProps = useCategoryCore(location, serverData.collection, data)
+
+
+  return <CategoryPageTmpl {...ownProps} />
 }
 
 CategoryPageSSR.propTypes = {

@@ -12,10 +12,7 @@ const cancelBulkMutation = require('./queries/bulk-cancel-mutation')
 const currentBulkOperation = require('./queries/bulk-current-operation')
 const { QUERY_CREATED, QUERY_RUNNING } = require('./constants')
 const { XMLParser } = require('fast-xml-parser');
-const Fastly = require('fastly')
 const { productFormatter } = require('../../src/utils/product-formatter')
-
-Fastly.ApiClient.instance.authenticate(process.env.GATSBY_FASTLY_API_TOKEN);
 
 async function bulkOperationById(id, isBulk = false) {
   const config = buildRequest({
@@ -259,71 +256,6 @@ async function getNewCollections(lastCacheDate, collections, secondAttempt = fal
 
 
   return await bulkOperationById(result.data.data.bulkOperationRunQuery.bulkOperation.id)
-}
-
-async function updateUnpublishedProductsList(sitemapProducts, cachedProducts) {
-  let deletedProducts = []
-
-  for (let {product: cachedProduct} of cachedProducts) {
-    // Ignore "swatches" products as they are not rendering in the sitemap, but they are on the page
-    if (cachedProduct.variants?.length && cachedProduct.variants[0].price == 0) {
-      continue
-    }
-
-    if (!sitemapProducts.find((handle) => handle === cachedProduct.handle) && !deletedProducts.find(handle => cachedProduct.handle === handle)) {
-      deletedProducts.push(cachedProduct.handle)
-    }
-  }
-
-  try {
-    const versions = await (new Fastly.VersionApi()).listServiceVersions({
-      'service_id': process.env.GATSBY_FASTLY_SERVICE_ID
-    });
-
-    let currentVersionId = null
-    let snippetId = null
-    
-    for (let version of versions) {
-      if (version.active === true) {
-        currentVersionId = version.number
-
-        break
-      }
-    }
-
-    const snippets = await (new Fastly.SnippetApi()).listSnippets({
-      'service_id': process.env.GATSBY_FASTLY_SERVICE_ID,
-      'version_id': currentVersionId,
-    });
-
-    for (let snippet of snippets) {
-      if (snippet.name === 'Dynamic Snippet Disabled Products List') {
-        snippetId = snippet.id
-
-        break
-      }
-    }
-
-    let snippetContent = ''
-
-    for (let deletedProduct of deletedProducts) {
-      snippetContent += `"/products/${deletedProduct}": "/products/${deletedProduct}",`
-    }
-
-    const updatedSnippet = await (new Fastly.SnippetApi()).updateSnippetDynamic({
-      'service_id': process.env.GATSBY_FASTLY_SERVICE_ID,
-      'version_id': currentVersionId,
-      'snippet_id': snippetId,
-      'name': 'Dynamic Snippet Disabled Products List',
-      'type': 'init',
-      'dynamic': 1,
-      'content': `table disabled_products {
-        ${snippetContent.slice(0, -1)}
-      }`
-    });
-  } catch(error) {
-    console.error("Error calling VersionApi.listServiceVersions", error);
-  }
 }
 
 module.exports = {

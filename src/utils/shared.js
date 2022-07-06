@@ -1,4 +1,4 @@
-export {default as Link} from '@b2s_core/src/utils/Link'
+export {default as Link} from '@b2storefront/b2s_core/dist/utils/Link'
 export { default as SEO } from 'src/b2s_core/src/components/snippets/SEO'
 export { Layout } from 'src/layouts/index.js'
 export { slugify } from 'src/b2s_core/src/utils/helpers'

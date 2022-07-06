@@ -13,7 +13,6 @@ exports.onCreateWebpackConfig = ({ actions }) => {
     resolve: {
       alias: {
         '@themes': path.resolve(__dirname, 'themes'),
-        '@b2s_core': path.resolve(__dirname, 'src/b2s_core'),
       },
     },
   })

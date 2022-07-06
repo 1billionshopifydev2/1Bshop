@@ -2,12 +2,12 @@ import 'svgxuse'
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
-import { createCheckout, refreshCheckout, recoverCheckout } from '@b2s_core/src/reducers/checkout'
-import { initializeSession } from '@b2s_core/src/reducers/session'
-import { setToken } from '@b2s_core/src/utils/session'
+import { createCheckout, refreshCheckout, recoverCheckout } from '@b2storefront/b2s_core/dist/reducers/checkout'
+import { initializeSession } from '@b2storefront/b2s_core/dist/reducers/session'
+import { setToken } from '@b2storefront/b2s_core/dist/utils/session'
 
 const LayoutTmpl =
-  require(`@themes/${process.env.B2S_THEME_NAME}/LayoutTmpl`).default
+  require(`@themes/${process.env.B2S_THEME_NAME}/Layout/LayoutTmpl`).default
 
 export const Layout = ({children}) => {
   const { checkout, session } = useSelector((store) => store)

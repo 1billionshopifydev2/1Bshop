@@ -1,5 +1,5 @@
 import React from 'react'
-import useCategoryCore from '../../b2s_core/src/components/CategoryPage/useCategoryCore'
+import useCategoryCore from '@b2storefront/b2s_core/dist/components/CategoryPage/useCategoryCore'
 
 const CategoryPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/CategoryPageTmpl`).default
 

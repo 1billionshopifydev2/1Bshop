@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import useProductDetailsCore from '@b2s_core/src/components/ProductDetails/useProductDetailsCore'
+import useProductDetailsCore from '@b2storefront/b2s_core/dist/components/ProductDetails/useProductDetailsCore'
 
-const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/ProductPageTmpl`).default
+const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/ProductPageTmpl`).default
 
 const ProductDetailsPage = ({ location, data, pageContext }) => {
   const ownProps = useProductDetailsCore({

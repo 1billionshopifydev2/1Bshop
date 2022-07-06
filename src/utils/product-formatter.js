@@ -1,4 +1,4 @@
-const { slugify } = require("../b2s_core/src/utils/helpers")
+const { slugify } = require("@b2storefront/b2s_core/dist/utils/helpers")
 
 const productFormatter = (product) => {
     if (!product) {

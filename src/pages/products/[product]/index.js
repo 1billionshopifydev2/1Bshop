@@ -5,8 +5,8 @@ import PropTypes from 'prop-types'
 import { buildRequest } from '../../../../plugins/gatsby-b2s-shopify/utils'
 import axios from 'axios'
 import productByHandleQuery from '../../../../plugins/gatsby-b2s-shopify/queries/product-by-handle'
-import { transformProduct } from '@b2s_core/src/data/transformers/shopify'
-import useProductDetailsCore from '@b2s_core/src/components/ProductDetails/useProductDetailsCore'
+import { transformProduct } from '@b2storefront/b2s_core/dist/data/transformers/shopify'
+import useProductDetailsCore from '@b2storefront/b2s_core/dist/components/ProductDetails/useProductDetailsCore'
 
 const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/ProductPageTmpl`).default
 
@@ -30,7 +30,7 @@ ProductPageSSR.defaultProps = {
   location: {},
 }
 
-export default ProductDetailsPageSSR
+export default ProductPageSSR
 
 export async function getServerData(context) {
   try {    

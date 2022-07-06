@@ -11,7 +11,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-static-folders',
     options: {
-      folders: [`/@themes/${process.env.B2S_THEME_NAME}/assets`],
+      folders: [`/@themes/${process.env.B2S_THEME_NAME}/Assets`],
     },
   },
   {
@@ -27,10 +27,6 @@ const plugins = [
   },
   {
     resolve: 'gatsby-plugin-no-sourcemaps',
-  },
-  {
-    resolve: 'gatsby-plugin-create-client-paths',
-    options: { prefixes: ['/dashboard/*'] },
   },
   'gatsby-plugin-image',
 ]
@@ -55,5 +51,5 @@ module.exports = {
     description: '',
     author: 'b2storefront',
   },
-  plugins: this.plugins,
+  plugins: plugins,
 }

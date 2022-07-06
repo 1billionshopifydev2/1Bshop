@@ -1,25 +1,29 @@
 import React from 'react'
-import * as Components from '../../../src/components/Cart/CartCore'
+import {Layout} from '../../../src/components/Layout/Layout'
+import SEO from '@b2storefront/b2s_core/dist/components/snippets/SEO'
+import {Loader} from '../../../src/components/Snippets/Loader'
+import { Link } from 'gatsby'
 
 const CartTmpl = props => (
-  <Components.Layout>
-    <Components.SEO title="Your Shopping Cart" />
+  <Layout>
+    <SEO title="Your Shopping Cart" />
     <div className="py-lg-5 pb-5">
       <div className="container">
         {props.model && props.model.lineItems.length === 0 ? (
           props.loading ? (
-            <Components.Loader />
+            <Loader />
           ) : (
             <CartEmpty />
           )
         ) : props.model ? (
-            <Components.cartTableCore model={props.model} />
+            <></>
+            // <cartTableCore model={props.model} />
         ) : (
-          <Components.Loader />
+          <Loader />
         )}
       </div>
     </div>
-  </Components.Layout>
+  </Layout>
 )
 
 const CartEmpty = () => (
@@ -29,9 +33,9 @@ const CartEmpty = () => (
         <h1 className="mb-4">
           Your cart is empty
         </h1>
-        <Components.Link className="btn btn-primary border-0 px-4 py-2" to="/">
+        <Link className="btn btn-primary border-0 px-4 py-2" to="/">
           Continue shopping
-        </Components.Link>
+        </Link>
       </div>
     </div>
   </div>

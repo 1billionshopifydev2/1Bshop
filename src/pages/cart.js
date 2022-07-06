@@ -1,12 +1,13 @@
 import React from 'react'
-import { cartCore } from '../components/Cart/CartCore'
+import useCartCore from '@b2storefront/b2s_core/dist/components/Cart/useCartCore'
 
-const CartTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Cart/CartTmpl`)
+const CartTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/CartTmpl`)
   .default
 
 const CartPage = () => {
-  const Component = cartCore()(CartTmpl)
-  return <Component />
+  const ownProps = useCartCore()
+
+  return <Cart {...ownProps} />
 }
 
 export default CartPage

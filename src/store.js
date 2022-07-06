@@ -3,7 +3,7 @@ import thunk from 'redux-thunk'
 import {
   checkoutReducer,
   sessionReducer,
-} from '@b2s_core/src/reducers'
+} from '@b2storefront/b2s_core/dist/reducers'
 
 const reducer = combineReducers({
   checkout: checkoutReducer,

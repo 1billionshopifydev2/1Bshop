@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCustomJavascript } from '@b2s_core/src/hooks/useCustomJavascript'
+import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustomJavascript'
 
 const HeaderTmpl = () => {
   useCustomJavascript(() => {

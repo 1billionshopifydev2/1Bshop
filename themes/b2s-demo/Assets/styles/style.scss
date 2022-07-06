@@ -189,7 +189,7 @@ a {
                     top: 0;
                     position: absolute;
                     content: '';
-                    background: url(../image/home.svg) 0 0 no-repeat;
+                    background: url(../images/home.svg) 0 0 no-repeat;
                     width: 15px;
                     height: 15px;
                     transform: translateY(1px);
@@ -260,7 +260,7 @@ a {
             }
 
             &-navigation-prev {
-                background: url(../image/arrow.svg) center center no-repeat #fff;
+                background: url(../images/arrow.svg) center center no-repeat #fff;
                 background-size: 12px;
                 display: block;
                 width: 24px;
@@ -277,7 +277,7 @@ a {
             }
 
             &-navigation-next {
-                background: url(../image/arrow.svg) center center no-repeat #fff;
+                background: url(../images/arrow.svg) center center no-repeat #fff;
                 background-size: 12px;
                 display: block;
                 width: 24px;
@@ -350,12 +350,12 @@ a {
 
                 &.standart {
                     padding-left: 2.875rem;
-                    background: url(../image/delivery.svg) 0 12px no-repeat;
+                    background: url(../images/delivery.svg) 0 12px no-repeat;
                 }
 
                 &.express {
                     padding-left: 2.875rem;
-                    background: url(../image/delivery-1.svg) 0 12px no-repeat;
+                    background: url(../images/delivery-1.svg) 0 12px no-repeat;
                 }
             }
         }
@@ -547,7 +547,7 @@ a {
 
             &-details {
                 .desc-title {
-                    background: url(../image/document.svg) center top no-repeat;
+                    background: url(../images/document.svg) center top no-repeat;
                 }
 
                 @media (max-width: 767px) {
@@ -556,7 +556,7 @@ a {
             }
             &-materials {
                 .desc-title {
-                    background: url(../image/fabric.svg) center top no-repeat;
+                    background: url(../images/fabric.svg) center top no-repeat;
                 }
             }            
         }        
@@ -598,7 +598,7 @@ a {
                         left: 0;
                         top: 0;
                         content:'';
-                        background: url(../image/autor.svg) 0 0 no-repeat;
+                        background: url(../images/autor.svg) 0 0 no-repeat;
                     }
                 }
             }
@@ -681,7 +681,7 @@ a {
             z-index: 2;
 
             &-prev {
-                background: url(../image/arrow.svg) center center no-repeat;
+                background: url(../images/arrow.svg) center center no-repeat;
                 display: block;
                 width: 24px;
                 height: 20px;
@@ -702,7 +702,7 @@ a {
             }
 
             &-next {
-                background: url(../image/arrow.svg) center center no-repeat;
+                background: url(../images/arrow.svg) center center no-repeat;
                 display: block;
                 width: 24px;
                 height: 20px;
@@ -762,7 +762,7 @@ a {
     display: inline-block;
     width: 9px;
     height: 9px;
-    background: url(../image/star.svg) center center no-repeat;
+    background: url(../images/star.svg) center center no-repeat;
     margin-left: .125rem;
 
     &:first-child {
@@ -770,7 +770,7 @@ a {
     }
 
     &-o {
-        background-image: url(../image/star-o.svg);        
+        background-image: url(../images/star-o.svg);        
     }
 }
 
@@ -780,7 +780,7 @@ a {
 }
 
 .sibscribe {
-    background: url(../image/subscribe.webp) center center no-repeat;
+    background: url(../images/subscribe.webp) center center no-repeat;
     background-size: cover;
     min-height: 242px;
     padding-bottom: 1rem;

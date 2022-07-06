@@ -1,14 +1,15 @@
 import React from 'react'
-import * as Components from '../../../src/components/CategoryPage/CategoryCore'
+import {Layout} from '../../../src/components/Layout/Layout'
+import SEO from '@b2storefront/b2s_core/dist/components/snippets/SEO'
 
 const CategoryPageTmpl = props => (
-  <Components.Layout>
-    <Components.SEO
+  <Layout>
+    <SEO
       title={props.seo.title}
       description={props.seo.description}
     />
     
-  </Components.Layout>
+  </Layout>
 )
 
 export default CategoryPageTmpl

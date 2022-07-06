@@ -1,7 +1,9 @@
-import * as gtm from '@b2s_core/src/utils/google_tag_manager'
+import * as gtm from '@b2storefront/b2s_core/dist/utils/google_tag_manager'
 import wrapWithProvider from './wrap-with-provider'
-import { trackPageView } from './src/b2s_core/src/utils/tracking'
+import { trackPageView } from '@b2storefront/b2s_core/dist/utils/tracking'
 export const wrapRootElement = wrapWithProvider
+
+require(`./themes/${process.env.B2S_THEME_NAME}/Assets/styles/style.scss`)
 
 export const onClientEntry = () => {
   const load = async () => {

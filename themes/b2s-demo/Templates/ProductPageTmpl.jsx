@@ -1,9 +1,9 @@
 import React from 'react'
-import Layout from '../../../src/components/Layout/Layout'
-import SEO from '@b2s_core/src/components/snippets/SEO'
-import { useCustomJavascript } from '@b2s_core/src/hooks/useCustomJavascript'
-import { AddToHead } from '@b2s_core/src/components/snippets/AddToHead'
-import { JSONLD } from '@b2s_core/src/components/snippets/JSONLD'
+import {Layout} from '../../../src/components/Layout/Layout'
+import SEO from '@b2storefront/b2s_core/dist/components/snippets/SEO'
+import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustomJavascript'
+import { AddToHead } from '@b2storefront/b2s_core/dist/components/snippets/AddToHead'
+import { JSONLD } from '@b2storefront/b2s_core/dist/components/snippets/JSONLD'
 
 /** 
  * @param {ProductPageTmpl.propTypes} props
@@ -37,12 +37,12 @@ const ProductPageTmpl = ({ product }) => {
                     <div class="col-12 col-lg-6 product__images">
                         <div id="mobileplaceholder" class="row product__images--wrapper">
                             <div class="col-auto swiper product__images--info swiper-initialized swiper-horizontal swiper-pointer-events swiper-backface-hidden">
-                                <div class="swiper-wrapper" id="swiper-wrapper-7109d39cb5578cb6d" aria-live="polite" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
-                                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 1"  style="width: 100%;">
+                                <div class="swiper-wrapper" id="swiper-wrapper-7109d39cb5578cb6d" aria-live="polite" css="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+                                    <div class="swiper-slide swiper-slide-active" role="group" aria-label="1 / 1"  css="width: 100%;">
                                         <img src="image/product-1.webp" class="swiper-lazy swiper-lazy-loaded" alt="T-Shirt Summer Vibes" width="720" height="720" />
                                     </div>                                                                                                  
                                 </div>
-                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true" style="width: 319px;"></span></div>
+                                <div class="swiper-pagination swiper-pagination-clickable swiper-pagination-bullets swiper-pagination-horizontal swiper-pagination-lock"><span class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1" aria-current="true" css="width: 319px;"></span></div>
                             <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
                         </div>
 
@@ -318,21 +318,21 @@ const ProductPageTmpl = ({ product }) => {
                                                     <span class="ratting-star"></span>
                                                     <span>3</span>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar" role="progressbar" css="width: 10%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                                 <div class="review__progress">
                                                     <span class="ratting-star"></span>
                                                     <span>4</span>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar" role="progressbar" css="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                                 <div class="review__progress">
                                                     <span class="ratting-star"></span>
                                                     <span>5</span>
                                                     <div class="progress">
-                                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        <div class="progress-bar" role="progressbar" css="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>                                                                                                                                             
                                             </div>
