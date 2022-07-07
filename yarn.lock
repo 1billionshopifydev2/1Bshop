@@ -149,10 +149,10 @@
     signedsource "^1.0.0"
     yargs "^15.3.1"
 
-"@b2storefront/b2s_core@^0.2.0", "@b2storefront/b2s_core@^0.2.10":
-  version "0.2.10"
-  resolved "https://registry.yarnpkg.com/@b2storefront/b2s_core/-/b2s_core-0.2.10.tgz#75e2370cff889f898c5cfda2ca47c0930ea4f52b"
-  integrity sha512-oo6uGAD6KeC5D3B+GQm6ifbayymDVoHS+cQG+88NVSX5ba8mf2YuXVwsVpz9IlcmTFB1IgVRdPTQ1RdQirrNRg==
+"@b2storefront/b2s_core@^0.2.0", "@b2storefront/b2s_core@^0.2.11":
+  version "0.2.11"
+  resolved "https://registry.yarnpkg.com/@b2storefront/b2s_core/-/b2s_core-0.2.11.tgz#65f464d2ef73ce224939f3b28dd27135fb96fcdf"
+  integrity sha512-AKjblwKbOkJ8m1zTXM5OeMl2TPiD/pGEGrQTQzANDFEt8i5bvcgGE+hqL7eDOmS/6FdMnXQ/4zWeX/ELmcSMVA==
   dependencies:
     "@b2storefront/b2s_core" "^0.2.0"
     "@babel/cli" "^7.18.6"
@@ -170,6 +170,7 @@
     axios "^0.21.1"
     cheerio "^1.0.0-rc.3"
     classnames "^2.2.6"
+    core-js "^3.23.3"
     cross-env "^7.0.3"
     cypress-localstorage-commands "^1.2.4"
     dom-parser "^0.1.6"
@@ -251,10 +252,10 @@
     url-parse "^1.4.7"
     url-search-params-polyfill "^8.0.0"
 
-"@b2storefront/gatsby-b2storefront-shopify@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@b2storefront/gatsby-b2storefront-shopify/-/gatsby-b2storefront-shopify-0.0.1.tgz#14d7576a58879e1d9e7e28f8c4e9373a85969a31"
-  integrity sha512-7VpS0JRurxEMnmruFtfW5DBKldfnUr3Iq1Y2DhGq1wKko5tl+Kct0R7Qcxa6mRIJNWU8gInwpS/IY2jIyuEbpw==
+"@b2storefront/gatsby-b2storefront-shopify@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@b2storefront/gatsby-b2storefront-shopify/-/gatsby-b2storefront-shopify-0.0.2.tgz#e67ade96d865471b7d103b6cd255a11c72cb33cc"
+  integrity sha512-TvITZ0wmoCCfW2ffEj9rSL9gc2w/TnGVDzsQ2wMKoruhyYA+uQlthO64a+0+Wl9R8HfW3lIaxZbo5l8cHgEQPA==
   dependencies:
     "@b2storefront/b2s_core" "^0.2.0"
     "@emotion/core" "^10.0.22"
