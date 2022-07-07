@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+const { ProductHeadScripts } = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/ProductPageTmpl`)
 
 export default function HTML(props) {
   return (
@@ -12,6 +13,7 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, shrink-to-fit=no, user-scalable=no"
         />
         {props.headComponents}
+        <ProductHeadScripts/>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
