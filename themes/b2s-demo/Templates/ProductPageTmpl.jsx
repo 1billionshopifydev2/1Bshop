@@ -29,9 +29,6 @@ return (
 /**
  * @param {ProductPageTmpl.propTypes} props
  **/
-
-
-
 const ProductPageTmpl = ({ product }) => {
   useCustomJavascript(() => {
     const swiper = new Swiper('.swiper', {
