@@ -15,6 +15,16 @@ exports.createPages = async ({ cache, actions, reporter }) => {
       },
     })
   }
+
+  for (let collection of allCollections) {
+    createPage({
+      path: `/collections/${collection.slug}`,
+      component: path.resolve('./src/components/Templates/CategoryPage.js'),
+      context: {
+        collection,
+      },
+    })
+  }
 }
 
 exports.sourceNodes = async (args) => {

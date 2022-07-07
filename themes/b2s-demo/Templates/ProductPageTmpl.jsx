@@ -4,6 +4,7 @@ import SEO from '@b2storefront/b2s_core/dist/components/snippets/SEO'
 import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustomJavascript'
 import { AddToHead } from '@b2storefront/b2s_core/dist/components/snippets/AddToHead'
 import { JSONLD } from '@b2storefront/b2s_core/dist/components/snippets/JSONLD'
+import { ProductType } from '@b2storefront/b2s_core/dist/types/product'
 
 /** 
  * @param {ProductPageTmpl.propTypes} props
@@ -22,7 +23,9 @@ const ProductPageTmpl = ({ product }) => {
       </AddToHead>
       <main class="main">
         <div class="container">
-
+            <code>
+              {JSON.stringify(product)}
+            </code>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                 <li class="breadcrumb-item breadcrumb-item--home"><a href="#">Home</a></li>
@@ -494,6 +497,10 @@ const ProductPageTmpl = ({ product }) => {
       </main>
     </Layout>
   )
+}
+
+ProductPageTmpl.propTypes = {
+    product: ProductType,
 }
 
 export default ProductPageTmpl

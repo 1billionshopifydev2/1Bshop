@@ -149,10 +149,10 @@
     signedsource "^1.0.0"
     yargs "^15.3.1"
 
-"@b2storefront/b2s_core@^0.2.0":
-  version "0.2.9"
-  resolved "https://registry.yarnpkg.com/@b2storefront/b2s_core/-/b2s_core-0.2.9.tgz#85285fcb20d118e104904eb27165d965ea642c24"
-  integrity sha512-r7E8e2Ma30VeM7G93ct1ExfP12UKNJJoaSzVS5KXHGiYU1gQ5O6AvsOfeYZIlNr0hnWMwdlDG/wp2s0ynhQh2A==
+"@b2storefront/b2s_core@^0.2.0", "@b2storefront/b2s_core@^0.2.10":
+  version "0.2.10"
+  resolved "https://registry.yarnpkg.com/@b2storefront/b2s_core/-/b2s_core-0.2.10.tgz#75e2370cff889f898c5cfda2ca47c0930ea4f52b"
+  integrity sha512-oo6uGAD6KeC5D3B+GQm6ifbayymDVoHS+cQG+88NVSX5ba8mf2YuXVwsVpz9IlcmTFB1IgVRdPTQ1RdQirrNRg==
   dependencies:
     "@b2storefront/b2s_core" "^0.2.0"
     "@babel/cli" "^7.18.6"
@@ -192,7 +192,6 @@
     gatsby-plugin-google-gtag "^3.1.0"
     gatsby-plugin-google-tagmanager "^3.1.0"
     gatsby-plugin-hotjar "^1.0.1"
-    gatsby-plugin-image "^1.6.0"
     gatsby-plugin-layout "^2.1.0"
     gatsby-plugin-manifest "^3.1.0"
     gatsby-plugin-no-sourcemaps "^3.1.0"
@@ -202,15 +201,12 @@
     gatsby-plugin-remove-fingerprints "0.0.2"
     gatsby-plugin-root-import "^2.0.5"
     gatsby-plugin-sass "^5.18.0"
-    gatsby-plugin-sharp "^3.1.1"
     gatsby-plugin-static-folders "^1.0.1"
     gatsby-plugin-styled-components "^4.2.0"
     gatsby-remark-images "^4.1.0"
     gatsby-source-filesystem "^3.1.0"
-    gatsby-source-shopify "^6.0.0"
     gatsby-source-strapi "^1.0.2"
     gatsby-transformer-remark "^3.1.0"
-    gatsby-transformer-sharp "^3.1.0"
     https "^1.0.0"
     isomorphic-fetch "^2.2.1"
     jquery "^3.6.0"
@@ -245,7 +241,6 @@
     sanitize-html "^1.21.1"
     sentry "^0.1.2"
     set-value "^2.0.1"
-    sharp "^0.25.3"
     shopify-buy "^2.9.0"
     sitemap-xml-parser "^0.0.2"
     slick-carousel "^1.8.1"
@@ -256,10 +251,10 @@
     url-parse "^1.4.7"
     url-search-params-polyfill "^8.0.0"
 
-"@b2storefront/gatsby-b2storefront-shopify@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@b2storefront/gatsby-b2storefront-shopify/-/gatsby-b2storefront-shopify-1.0.0.tgz#b97eeb3a616765e57a19074e234f3c0c2628355f"
-  integrity sha512-Wpiz/TM36fpKQUqjEUCY0K3E/YRlTRYapbpu2MyZAmq9Vvt093fJWtRndAgGfi79u+HFyrsS3hVeoAqMtpbnRA==
+"@b2storefront/gatsby-b2storefront-shopify@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@b2storefront/gatsby-b2storefront-shopify/-/gatsby-b2storefront-shopify-0.0.1.tgz#14d7576a58879e1d9e7e28f8c4e9373a85969a31"
+  integrity sha512-7VpS0JRurxEMnmruFtfW5DBKldfnUr3Iq1Y2DhGq1wKko5tl+Kct0R7Qcxa6mRIJNWU8gInwpS/IY2jIyuEbpw==
   dependencies:
     "@b2storefront/b2s_core" "^0.2.0"
     "@emotion/core" "^10.0.22"
@@ -3598,15 +3593,20 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@>=10.0.0":
-  version "18.0.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.1.tgz#e91bd73239b338557a84d1f67f7b9e0f25643870"
-  integrity sha512-CmR8+Tsy95hhwtZBKJBs0/FFq4XX7sDZHlGGf+0q+BRZfMbOTkzkj0AFAuTyXbObDIoanaBBW0+KEW+m3N16Wg==
+"@types/node@*":
+  version "18.0.3"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.3.tgz#463fc47f13ec0688a33aec75d078a0541a447199"
+  integrity sha512-HzNRZtp4eepNitP+BD6k2L6DROIDG4Q0fm4x+dwfsr6LGmROENnok75VGw40628xf+iR24WeMFcHuuBDUAzzsQ==
 
 "@types/node@16.9.1":
   version "16.9.1"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.1.tgz#0611b37db4246c937feef529ddcc018cf8e35708"
   integrity sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==
+
+"@types/node@>=10.0.0":
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.0.1.tgz#e91bd73239b338557a84d1f67f7b9e0f25643870"
+  integrity sha512-CmR8+Tsy95hhwtZBKJBs0/FFq4XX7sDZHlGGf+0q+BRZfMbOTkzkj0AFAuTyXbObDIoanaBBW0+KEW+m3N16Wg==
 
 "@types/node@^8.5.7":
   version "8.10.66"
@@ -6540,9 +6540,9 @@ ee-first@1.1.1:
   integrity sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==
 
 electron-to-chromium@^1.4.172:
-  version "1.4.180"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.180.tgz#380b06037836055d12c7de181ee90b8ed911c3e7"
-  integrity sha512-7at5ash3FD9U5gPa3/wPr6OdiZd/zBjvDZaaHBpcqFOFUhZiWnb7stkqk8xUFL9H9nk7Yok5vCCNK8wyC/+f8A==
+  version "1.4.182"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.182.tgz#5d59214ebfe90b36f23e81cd226a42732cd8c677"
+  integrity sha512-OpEjTADzGoXABjqobGhpy0D2YsTncAax7IkER68ycc4adaq0dqEG9//9aenKPy7BGA90bqQdLac0dPp6uMkcSg==
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
