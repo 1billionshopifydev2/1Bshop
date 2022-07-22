@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 import React from 'react'
 import PropTypes from 'prop-types'
 import { buildRequest } from '@b2storefront/gatsby-b2storefront-shopify/utils'
@@ -7,6 +5,7 @@ import axios from 'axios'
 import productByHandleQuery from '@b2storefront/gatsby-b2storefront-shopify/queries/product-by-handle'
 import { transformProduct } from '@b2storefront/b2s_core/dist/data/transformers/shopify'
 import useProductDetailsCore from '@b2storefront/b2s_core/dist/components/ProductDetails/useProductDetailsCore'
+import useDebug from '@b2storefront/b2s_core/dist/hooks/useDebug'
 
 const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/ProductPageTmpl`).default
 
@@ -15,6 +14,8 @@ const ProductPageSSR = ({ location, serverData }) => {
     location,
     product: serverData.product,
   })
+
+  useDebug('ProductPageSSR', ownProps)
 
   return <ProductPageTmpl {...ownProps} />
 }

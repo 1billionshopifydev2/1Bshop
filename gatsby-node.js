@@ -4,26 +4,28 @@ const { getData } = require('@b2storefront/gatsby-b2storefront-shopify/requests'
 exports.createPages = async ({ cache, actions, reporter }) => {
   const { createPage } = actions
 
-  const { allProducts, allCollections } = await getData(reporter, cache)
+  if (process.env.GATSBY_BUILD_MODE !== 'preview') {
+    const { allProducts, allCollections } = await getData(reporter, cache)
 
-  for (let product of allProducts) {
-    createPage({
-      path: `/products/${product.slug}`,
-      component: path.resolve('./src/components/Templates/ProductPage.js'),
-      context: {
-        product,
-      },
-    })
-  }
-
-  for (let collection of allCollections) {
-    createPage({
-      path: `/collections/${collection.slug}`,
-      component: path.resolve('./src/components/Templates/CategoryPage.js'),
-      context: {
-        collection,
-      },
-    })
+    for (let product of allProducts) {
+      createPage({
+        path: `/products/${product.slug}`,
+        component: path.resolve('./src/components/Templates/ProductPage.js'),
+        context: {
+          product,
+        },
+      })
+    }
+  
+    for (let collection of allCollections) {
+      createPage({
+        path: `/collections/${collection.slug}`,
+        component: path.resolve('./src/components/Templates/CategoryPage.js'),
+        context: {
+          collection,
+        },
+      })
+    }
   }
 }
 
