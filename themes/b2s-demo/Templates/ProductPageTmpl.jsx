@@ -6,7 +6,7 @@ import { AddToHead } from '@b2storefront/b2s_core/dist/components/snippets/AddTo
 import { JSONLD } from '@b2storefront/b2s_core/dist/components/snippets/JSONLD'
 import { ProductType } from '@b2storefront/b2s_core/dist/types/product'
 import { ProductVariantType } from '@b2storefront/b2s_core/dist/types/product-variant'
-import { func } from 'prop-types'
+import { func, number } from 'prop-types'
 
 export const ProductHeadScripts = ({ product }) => (
   <>
@@ -18,7 +18,8 @@ export const ProductHeadScripts = ({ product }) => (
 /**
  * @param {ProductPageTmpl.propTypes} props
  **/
-const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleAddToCart, handleVariantChange }) => {
+const ProductPageTmpl = (props) => {
+  console.log(props)
   useCustomJavascript(() => {
     const swiper = new Swiper('.swiper', {
       // Optional parameters
@@ -45,8 +46,8 @@ const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleA
 
   return (
     <Layout>
-      <SEO title={product.seo.title} description={product.seo.description} />
-      <JSONLD type="product" data={product} />
+      <SEO title={props.product.seo.title} description={props.product.seo.description} />
+      <JSONLD type="product" data={props.product} />
       <AddToHead path="productheadscripts">{/** Other custom code which should be aded to HEAD */}
         <style>
           {`
@@ -122,7 +123,7 @@ const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleA
         </div>
       </div>
     </div>
-    <h1>{product.title}</h1>
+    <h1>{props.product.title}</h1>
     <div className="row">
       <div className="col product__info--price">
         <span className="new-price">$89.99</span>
@@ -131,7 +132,7 @@ const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleA
       <div className="col product__info--manufacturer">House my Brand</div>
     </div>
     <div className="product__info--options">
-      {product.options.map(option => (
+      {props.product.options.map(option => (
         <div className="product__info--options-item">
           <div className="option-title">{option.name}:</div>
           {option.name === 'Color' && (
@@ -139,7 +140,7 @@ const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleA
               {option.values.map(value => (
                 <div className="form-check form-check-inline">
                   <label for={value}>
-                    <input className="form-check-input" type="radio" name="color" id={value} value={value} onClick={() => handleSelectOption(option.id, value)} />
+                    <input className="form-check-input" type="radio" name="color" id={value} value={value} onClick={() => props.handleSelectOption(option.id, value)} />
                   </label>
                 </div>
               ))}
@@ -147,7 +148,7 @@ const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleA
           )}
           {option.name !== 'Color' && (
             <div className="option-list">
-              <select className="form-select form-select-inline" aria-label="Default select example" onChange={(e) => handleSelectOption(option.id, e.target.value)}>
+              <select className="form-select form-select-inline" aria-label="Default select example" onChange={(e) => props.handleSelectOption(option.id, e.target.value)}>
                 <option selected>Select value</option>
                 {option.values.map(value => (
                   <option value={value}>{value}</option>
@@ -162,17 +163,17 @@ const ProductPageTmpl = ({ product, selectedVariant, handleSelectOption, handleA
       <div className="product__info--qty">
         <div className="qty-title">Quantity:</div>
         <div className="input-group">
-          <button className="btn btn-outline-secondary btn-minus" type="button" id="minus">
+          <button className="btn btn-outline-secondary btn-minus" type="button" id="minus" onClick={props.decreaseQuantity}>
             -
           </button>
-          <input type="text" className="form-control" value="1" />
-          <button className="btn btn-outline-secondary btn-plus" type="button" id="plus">
+          <input type="text" className="form-control" value={props.quantity} />
+          <button className="btn btn-outline-secondary btn-plus" type="button" id="plus" onClick={props.increaseQuantity}>
             +
           </button>
         </div>
       </div>
       <div className="product__info--buy">
-        <button className="btn btn-primary" type="button">
+        <button className="btn btn-primary" type="button" onClick={() => props.handleAddToCart(props.dispatch, props.selectedVariant.id, props.quantity)}>
           Add to cart
         </button>
       </div>
@@ -445,6 +446,10 @@ ProductPageTmpl.propTypes = {
   handleVariantChange: func,
   handleSelectOption: func,
   handleAddToCart: func,
+  quantity: number,
+  increaseQuantity: func,
+  decreaseQuantity: func,
+  updateQuantity: func,
 }
 
 export default ProductPageTmpl

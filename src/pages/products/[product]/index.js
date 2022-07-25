@@ -6,6 +6,7 @@ import productByHandleQuery from '@b2storefront/gatsby-b2storefront-shopify/quer
 import { transformProduct } from '@b2storefront/b2s_core/dist/data/transformers/shopify'
 import useProductDetailsCore from '@b2storefront/b2s_core/dist/components/ProductDetails/useProductDetailsCore'
 import useDebug from '@b2storefront/b2s_core/dist/hooks/useDebug'
+import { useDispatch } from 'react-redux'
 
 const ProductPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/ProductPageTmpl`).default
 
@@ -14,6 +15,8 @@ const ProductPageSSR = ({ location, serverData }) => {
     location,
     product: serverData.product,
   })
+
+  ownProps.dispatch = useDispatch()
 
   useDebug('ProductPageSSR', ownProps)
 
