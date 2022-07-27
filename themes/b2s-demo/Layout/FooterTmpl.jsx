@@ -71,9 +71,6 @@ const FooterTmpl = () => {
                 </div>
             </div>
         </div>
-        <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
-        <script src="js/swiper/swiper-bundle.min.js"></script>
-        <script src="js/main.js"></script>
     </footer>
   )
 }

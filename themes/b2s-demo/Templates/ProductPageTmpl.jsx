@@ -8,18 +8,10 @@ import { ProductType } from '@b2storefront/b2s_core/dist/types/product'
 import { ProductVariantType } from '@b2storefront/b2s_core/dist/types/product-variant'
 import { func, number } from 'prop-types'
 
-export const ProductHeadScripts = ({ product }) => (
-  <>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
-  </>
-)
-
 /**
  * @param {ProductPageTmpl.propTypes} props
  **/
 const ProductPageTmpl = (props) => {
-  console.log(props)
   useCustomJavascript(() => {
     const swiper = new Swiper('.swiper', {
       // Optional parameters
@@ -439,6 +431,13 @@ const ProductPageTmpl = (props) => {
     </Layout >
   )
 }
+
+export const ProductHeadScripts = ({ product }) => (
+  <>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+  </>
+)
 
 ProductPageTmpl.propTypes = {
   product: ProductType,

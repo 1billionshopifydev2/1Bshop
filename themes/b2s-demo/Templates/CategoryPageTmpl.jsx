@@ -9,9 +9,51 @@ import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustom
 /** 
  * @param {CategoryPageTmpl.propTypes} props
  **/
-const CategoryPageTmpl = ({ category }) => {
+const CategoryPageTmpl = ({ category, products }) => {
   useCustomJavascript(() => {
     
+    function toggleFilters() {
+      document.body.classList.toggle('filters-active');
+    }
+
+    function removeFilters() {
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 767 && document.body.classList.contains('filters-active') ) {
+        document.body.classList.remove('filters-active');
+      }
+    })
+    }
+
+    removeFilters();
+
+    // const filterPrice = new Slider("#filter-price", { 
+    // id: "filter-price", 
+    // min: 0, 
+    // max: 500, 
+    // range: true, 
+    // value: [0, 500] ,
+    // });
+
+    window.addEventListener('DOMContentLoaded', function() {
+    let rangeMin = document.querySelector('.tooltip-min .tooltip-inner');
+    let rangeMinBlock = this.document.querySelector('#filter-price-min-label');
+    rangeMinBlock.textContent = rangeMin.textContent + ' USD';
+
+    let rangeMax = document.querySelector('.tooltip-max .tooltip-inner');
+    let rangeMaxBlock = this.document.querySelector('#filter-price-max-label');
+    rangeMaxBlock.textContent = rangeMax.textContent + ' USD';
+
+    rangeMin.addEventListener('DOMSubtreeModified', function() {
+      rangeMinBlock.textContent = rangeMin.textContent + ' USD';
+    })
+
+    rangeMax.addEventListener('DOMSubtreeModified', function() {
+      rangeMaxBlock.textContent = rangeMax.textContent + ' USD';
+    })
+
+})
+
+
   })
 
   return (
@@ -25,16 +67,10 @@ const CategoryPageTmpl = ({ category }) => {
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
               <li className="breadcrumb-item breadcrumb-item--home">
-                <a href="#">Home</a>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">Men`s Tops</a>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">T-Shirt</a>
+                <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item active" aria-current="page">
-                T-Shirt Summer Vibes
+                {category.title}
               </li>
             </ol>
           </nav>
@@ -392,15 +428,15 @@ const CategoryPageTmpl = ({ category }) => {
             <div className="col-12 col-md-8 col-lg-9">
               <div className="categories__head">
                 <h1 className="categories__name">
-                  Men's Tops <span>(133)</span>
+                  {category.title} <span>({products.length})</span>
                 </h1>
                 <div className="categories__sort">
                   <div className="categories__sort--title">Show products:</div>
                   <select className="form-select">
-                    <option selected="">9</option>
-                    <option value={1}>30</option>
-                    <option value={2}>60</option>
-                    <option value={3}>120</option>
+                    <option selected="" onClick={() => setPageSize(9)}>9</option>
+                    <option onClick={() => setPageSize(30)}>30</option>
+                    <option onClick={() => setPageSize(60)}>60</option>
+                    <option onClick={() => setPageSize(120)}>120</option>
                   </select>
                   <div className="categories__sort--title">Sort:</div>
                   <select className="form-select">
@@ -507,6 +543,13 @@ const CategoryPageTmpl = ({ category }) => {
     </Layout>
   )
 }
+
+export const CategoryHeadScripts = ({ product }) => (
+  <>
+    <link rel="stylesheet" href="/js/bootstrap-slider/bootstrap-slider.min.css" />
+    <script src="/js/bootstrap-slider/bootstrap-slider.min.js"></script>
+  </>
+)
 
 CategoryPageTmpl.propTypes = {
   category: CategoryType,
