@@ -8,7 +8,7 @@
     "node": ">=16"
   },
   "dependencies": {
-    "@b2storefront/b2s_core": "^0.2.11",
+    "@b2storefront/b2s_core": "^0.2.14",
     "@b2storefront/gatsby-b2storefront-shopify": "^0.0.2",
     "@emotion/core": "^10.0.22",
     "@emotion/styled": "^10.0.22",
