@@ -13,42 +13,15 @@ import { func, number } from 'prop-types'
  **/
 const ProductPageTmpl = (props) => {
   useCustomJavascript(() => {
-    const swiper = new Swiper('.swiper', {
-      // Optional parameters
-      direction: 'vertical',
-      loop: true,
 
-      // If we need pagination
-      pagination: {
-        el: '.swiper-pagination',
-      },
-
-      // Navigation arrows
-      navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-
-      // And if we need scrollbar
-      scrollbar: {
-        el: '.swiper-scrollbar',
-      },
-    })
   })
 
   return (
     <Layout>
       <SEO title={props.product.seo.title} description={props.product.seo.description} />
       <JSONLD type="product" data={props.product} />
-      <AddToHead path="productheadscripts">{/** Other custom code which should be aded to HEAD */}
-        <style>
-          {`
-            .swiper {
-              width: 600px;
-              height: 300px;
-            }
-          `}
-        </style>
+      <AddToHead>
+
       </AddToHead>
       <main className="main">
         <div className="container">
@@ -72,111 +45,94 @@ const ProductPageTmpl = (props) => {
           <div className="product">
             <div className="row">
               <div className="col-12 col-lg-6 product__images">
-
-                <div className="swiper">
-
-                <div className="swiper-wrapper">
-
-                    <div className="swiper-slide">Slide 1</div>
-                    <div className="swiper-slide">Slide 2</div>
-                    <div className="swiper-slide">Slide 3</div>
-           
-                </div>
-
-                <div className="swiper-pagination"></div>
-
-
-                <div className="swiper-button-prev"></div>
-                <div className="swiper-button-next"></div>
-
-
-                <div className="swiper-scrollbar"></div>
-                </div>
+                <img src={props.selectedVariant.image.url || props.product.featured_image.url} alt={props.selectedVariant.title} />
               </div >
-  <div className="col-12 col-lg-6 product__info">
-    <div className="product__info--shipping">
-      <div className="product__info--shipping-item standart">
-        <span>Standard shipment</span>
-        Free within 3-6 business days
-      </div>
-      <div className="product__info--shipping-item express">
-        <span>Express delivery</span>
-        $35,00 available
-      </div>
-    </div>
-    <div className="row align-items-center">
-      <div className="col">
-        <span className="badge badge-sale">Sale</span>
-      </div>
-      <div className="col">
-        <div className="product__info--model">
-          Product ID:
-          <span>261311</span>
-        </div>
-      </div>
-    </div>
-    <h1>{props.product.title}</h1>
-    <div className="row">
-      <div className="col product__info--price">
-        <span className="new-price">$89.99</span>
-        <span className="old-price">$119.99</span>
-      </div>
-      <div className="col product__info--manufacturer">House my Brand</div>
-    </div>
-    <div className="product__info--options">
-      {props.product.options.map(option => (
-        <div className="product__info--options-item">
-          <div className="option-title">{option.name}:</div>
-          {option.name === 'Color' && (
-            <div className="option-list radio-color">
-              {option.values.map(value => (
-                <div className="form-check form-check-inline">
-                  <label for={value}>
-                    <input className="form-check-input" type="radio" name="color" id={value} value={value} onClick={() => props.handleSelectOption(option.id, value)} />
-                  </label>
+              <div className="col-12 col-lg-6 product__info">
+                <div className="product__info--shipping">
+                  <div className="product__info--shipping-item standart">
+                    <span>Standard shipment</span>
+                    Free within 3-6 business days
+                  </div>
+                  <div className="product__info--shipping-item express">
+                    <span>Express delivery</span>
+                    $35,00 available
+                  </div>
                 </div>
-              ))}
-            </div>
-          )}
-          {option.name !== 'Color' && (
-            <div className="option-list">
-              <select className="form-select form-select-inline" aria-label="Default select example" onChange={(e) => props.handleSelectOption(option.id, e.target.value)}>
-                <option selected>Select value</option>
-                {option.values.map(value => (
-                  <option value={value}>{value}</option>
-                ))}
-              </select>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-    <div className="product__info--btns">
-      <div className="product__info--qty">
-        <div className="qty-title">Quantity:</div>
-        <div className="input-group">
-          <button className="btn btn-outline-secondary btn-minus" type="button" id="minus" onClick={props.decreaseQuantity}>
-            -
-          </button>
-          <input type="text" className="form-control" value={props.quantity} />
-          <button className="btn btn-outline-secondary btn-plus" type="button" id="plus" onClick={props.increaseQuantity}>
-            +
-          </button>
-        </div>
-      </div>
-      <div className="product__info--buy">
-        <button className="btn btn-primary" type="button" onClick={() => props.handleAddToCart(props.dispatch, props.selectedVariant.id, props.quantity)}>
-          Add to cart
-        </button>
-      </div>
-      <div className="product__info--wish">
-        <button className="btn btn-outline-secondary" type="button">
-          <img src="image/heart.svg" alt="" width="17" height="17" />
-        </button>
-      </div>
-    </div>
-  </div>
-            </div >
+                <div className="row align-items-center">
+                  <div className="col">
+                    <span className="badge badge-sale">Sale</span>
+                  </div>
+                  <div className="col">
+                    <div className="product__info--model">
+                      Product ID:
+                      <span>{props.selectedVariant.sku}</span>
+                    </div>
+                  </div>
+                </div>
+                <h1>{props.product.title}</h1>
+                <div className="row">
+                  <div className="col product__info--price">
+                    <span className="new-price">${props.selectedVariant.price}</span>
+                    {!!props.selectedVariant.old_price && (
+                      <span className="old-price">${props.selectedVariant.old_price}</span>
+                    )}
+                  </div>
+                  <div className="col product__info--manufacturer">House my Brand</div>
+                </div>
+                <div className="product__info--options">
+                  {props.product.options.map(option => (
+                    <div className="product__info--options-item">
+                      <div className="option-title">{option.name}:</div>
+                      {option.name === 'Color' && (
+                        <div className="option-list radio-color">
+                          {option.values.map(value => (
+                            <div className="form-check form-check-inline">
+                              <label for={value}>
+                                <input className="form-check-input" type="radio" name="color" id={value} value={value} onClick={() => props.handleSelectOption(option.id, value)} />
+                              </label>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {option.name !== 'Color' && (
+                        <div className="option-list">
+                          <select className="form-select form-select-inline" aria-label="Default select example" onChange={(e) => props.handleSelectOption(option.id, e.target.value)}>
+                            <option selected>Select value</option>
+                            {option.values.map(value => (
+                              <option value={value}>{value}</option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+                <div className="product__info--btns">
+                  <div className="product__info--qty">
+                    <div className="qty-title">Quantity:</div>
+                    <div className="input-group">
+                      <button className="btn btn-outline-secondary btn-minus" type="button" id="minus" onClick={props.decreaseQuantity}>
+                        -
+                      </button>
+                      <input type="text" className="form-control" value={props.quantity} />
+                      <button className="btn btn-outline-secondary btn-plus" type="button" id="plus" onClick={props.increaseQuantity}>
+                        +
+                      </button>
+                    </div>
+                  </div>
+                  <div className="product__info--buy">
+                    <button className="btn btn-primary" type="button" onClick={() => props.handleAddToCart(props.dispatch, props.selectedVariant.id, props.quantity)}>
+                      Add to cart
+                    </button>
+                  </div>
+                  <div className="product__info--wish">
+                    <button className="btn btn-outline-secondary" type="button">
+                      <img src="image/heart.svg" alt="" width="17" height="17" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+  </div >
 
   <div className="col-12">
     <ul className="nav nav-tabs" id="productTab" role="tablist">
@@ -434,8 +390,7 @@ const ProductPageTmpl = (props) => {
 
 export const ProductHeadScripts = ({ product }) => (
   <>
-    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
-    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+
   </>
 )
 

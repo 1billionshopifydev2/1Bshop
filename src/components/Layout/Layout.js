@@ -48,6 +48,7 @@ export const Layout = ({children}) => {
 
   const ownProps = {
     children,
+    checkout,
   }
   
   return (<LayoutTmpl {...ownProps} />)

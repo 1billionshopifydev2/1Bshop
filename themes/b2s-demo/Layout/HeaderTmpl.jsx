@@ -1,7 +1,7 @@
 import React from 'react'
 import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustomJavascript'
 
-const HeaderTmpl = () => {
+const HeaderTmpl = (props) => {
   useCustomJavascript(() => {
     
   })
@@ -27,7 +27,8 @@ const HeaderTmpl = () => {
                           <a className="nav-link" href="#"><img src="image/search.svg" alt="Search" width="19" height="19" /></a>
                       </li>                        
                       <li className="nav-item">
-                        <a className="nav-link" href="#"><img src="image/cart.svg" alt="Shopping Cart" width="19" height="19" /></a>
+                        <a className="nav-link" href={props.cart ? props.cart.webUrl : '#'}><img src="image/cart.svg" alt="Shopping Cart" width="19" height="19" /></a>
+                        ({props.cart?.lineItems?.length})
                       </li>
                       <li className="nav-item">
                         <a className="nav-link" href="#"><img src="image/avatar.svg" alt="Account" width="19" height="19" /></a>

@@ -9,7 +9,7 @@ import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustom
 /** 
  * @param {CategoryPageTmpl.propTypes} props
  **/
-const CategoryPageTmpl = ({ category, products }) => {
+const CategoryPageTmpl = ({ category, products, productTypes, productOptions, handleFilterChange, isFilterSelected, page, pageSize, setPage, setPageSize, numberOfPages, handleSortOptionChange }) => {
   useCustomJavascript(() => {
     
     function toggleFilters() {
@@ -97,333 +97,59 @@ const CategoryPageTmpl = ({ category, products }) => {
                     <span>Product type</span>
                   </a>
                 </div>
-                <div
-                  className="filter__item--content collapse show"
-                  id="collapseFilter-1"
-                >
+                <div className="filter__item--content collapse show">
                   <div className="check-block">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="flexCheck-1"
-                      />
-                      <label className="form-check-label" htmlFor="flexCheck-1">
-                        T-Shirts <span>(411)</span>
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="flexCheck-2"
-                      />
-                      <label className="form-check-label" htmlFor="flexCheck-2">
-                        Sweatshirts <span>(131)</span>
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="flexCheck-3"
-                      />
-                      <label className="form-check-label" htmlFor="flexCheck-3">
-                        Tank Tops <span>(56)</span>
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="flexCheck-4"
-                      />
-                      <label className="form-check-label" htmlFor="flexCheck-4">
-                        Dress shirts <span>(8)</span>
-                      </label>
-                    </div>
+                    {productTypes.map(productType => (
+                      <div className="form-check">
+                        <input
+                          className="form-check-input"
+                          type="checkbox"
+                          onClick={() => handleFilterChange('product_type', productType)}
+                          checked={isFilterSelected('product_type', productType)}
+                          id={`product-type-${productType}`}
+                        />
+                        <label className="form-check-label" htmlFor={`product-type-${productType}`}>
+                          {productType}
+                        </label>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-              <div className="filter__item">
-                <div className="filter__item--head">
-                  <a
-                    className="filter__item--title"
-                    data-bs-toggle="collapse"
-                    href="#collapseFilter-2"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseFilter-2"
-                  >
-                    <span>Price</span>
-                  </a>
-                </div>
-                <div
-                  className="filter__item--content collapse show"
-                  id="collapseFilter-2"
-                >
-                  <div className="filter-price__labels">
-                    <span id="filter-price-min-label" />
-                    <span id="filter-price-max-label" />
+              {productOptions.map(productOption => (
+                <div className="filter__item">
+                  <div className="filter__item--head">
+                    <a
+                      className="filter__item--title"
+                      data-bs-toggle="collapse"
+                      href="#collapseFilter-1"
+                      role="button"
+                      aria-expanded="false"
+                      aria-controls="collapseFilter-1"
+                    >
+                      <span>{productOption.name}</span>
+                    </a>
                   </div>
-                  <div id="filter-price__block" className="filter-price__block">
-                    <input
-                      id="filter-price"
-                      data-slider-id="filter-price"
-                      type="text"
-                      data-slider-min={0}
-                      data-slider-max={500}
-                      data-slider-step={1}
-                      data-slider-value={1}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="filter__item">
-                <div className="filter__item--head">
-                  <a
-                    className="filter__item--title collapsed"
-                    data-bs-toggle="collapse"
-                    href="#collapseFilter-3"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseFilter-3"
-                  >
-                    <span>Collection</span>
-                  </a>
-                </div>
-                <div
-                  className="filter__item--content collapse"
-                  id="collapseFilter-3"
-                >
-                  <div className="radio-block">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="collection-1"
-                      />
-                      <label className="form-check-label" htmlFor="collection-1">
-                        Winter
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="collection-2"
-                        defaultChecked=""
-                      />
-                      <label className="form-check-label" htmlFor="collection-2">
-                        Spring
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="collection-3"
-                      />
-                      <label className="form-check-label" htmlFor="collection-3">
-                        Summer
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        name="flexRadioDefault"
-                        id="collection-4"
-                        defaultChecked=""
-                      />
-                      <label className="form-check-label" htmlFor="collection-4">
-                        Autumn
-                      </label>
+                  <div className="filter__item--content collapse show">
+                    <div className="check-block">
+                      {productOption.values.map(value => (
+                        <div className="form-check">
+                          <input
+                            className="form-check-input"
+                            type="checkbox"
+                            onClick={() => handleFilterChange(productOption.name, value)}
+                            checked={isFilterSelected(productOption.name, value)}
+                            id={`${productOption.name}-${value}`}
+                          />
+                          <label className="form-check-label" htmlFor="flexCheck-1">
+                            {value}
+                          </label>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="filter__item">
-                <div className="filter__item--head">
-                  <a
-                    className="filter__item--title"
-                    data-bs-toggle="collapse"
-                    href="#collapseFilter-4"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseFilter-4"
-                  >
-                    <span>Size</span>
-                  </a>
-                </div>
-                <div
-                  className="filter__item--content collapse show"
-                  id="collapseFilter-4"
-                >
-                  <div className="check-size">
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="sizeCheck-1"
-                      />
-                      <label className="form-check-label" htmlFor="sizeCheck-1">
-                        XS
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="sizeCheck-2"
-                      />
-                      <label className="form-check-label" htmlFor="sizeCheck-2">
-                        S
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="sizeCheck-3"
-                      />
-                      <label className="form-check-label" htmlFor="sizeCheck-3">
-                        M
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="sizeCheck-4"
-                      />
-                      <label className="form-check-label" htmlFor="sizeCheck-4">
-                        L
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="sizeCheck-5"
-                      />
-                      <label className="form-check-label" htmlFor="sizeCheck-5">
-                        XL
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <input
-                        className="form-check-input"
-                        type="checkbox"
-                        defaultValue=""
-                        id="sizeCheck-6"
-                      />
-                      <label className="form-check-label" htmlFor="sizeCheck-6">
-                        XXL
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="filter__item">
-                <div className="filter__item--head">
-                  <a
-                    className="filter__item--title"
-                    data-bs-toggle="collapse"
-                    href="#collapseFilter-5"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="collapseFilter-5"
-                  >
-                    <span>Color</span>
-                  </a>
-                </div>
-                <div
-                  className="filter__item--content collapse show"
-                  id="collapseFilter-5"
-                >
-                  <div className="check-color">
-                    <div className="form-check form-check-inline">
-                      <label className="form-check-label" htmlFor="black">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          name="black"
-                          id="black"
-                          defaultValue="black"
-                        />
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <label className="form-check-label" htmlFor="brown">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          name="brown"
-                          id="brown"
-                          defaultValue="brown"
-                        />
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <label className="form-check-label" htmlFor="yellow">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          name="yellow"
-                          id="yellow"
-                          defaultValue="yellow"
-                        />
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <label className="form-check-label" htmlFor="grey">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          name="grey"
-                          id="grey"
-                          defaultValue="grey"
-                        />
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <label className="form-check-label" htmlFor="white">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          name="white"
-                          id="white"
-                          defaultValue="white"
-                        />
-                      </label>
-                    </div>
-                    <div className="form-check form-check-inline">
-                      <label className="form-check-label" htmlFor="blue">
-                        <input
-                          className="form-check-input"
-                          type="checkbox"
-                          name="blue"
-                          id="blue"
-                          defaultValue="blue"
-                        />
-                      </label>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              ))}
             </aside>
             <div className="col-12 col-md-8 col-lg-9">
               <div className="categories__head">
@@ -432,18 +158,21 @@ const CategoryPageTmpl = ({ category, products }) => {
                 </h1>
                 <div className="categories__sort">
                   <div className="categories__sort--title">Show products:</div>
-                  <select className="form-select">
-                    <option selected="" onClick={() => setPageSize(9)}>9</option>
-                    <option onClick={() => setPageSize(30)}>30</option>
-                    <option onClick={() => setPageSize(60)}>60</option>
-                    <option onClick={() => setPageSize(120)}>120</option>
+                  <select className="form-select" defaultValue={pageSize} onChange={(e) => setPageSize(e.target.value)}>
+                    <option value="9">9</option>
+                    <option value="30">30</option>
+                    <option value="60">60</option>
+                    <option value="120">120</option>
                   </select>
                   <div className="categories__sort--title">Sort:</div>
-                  <select className="form-select">
-                    <option selected="">popular</option>
-                    <option value={1}>price</option>
-                    <option value={2}>name</option>
-                    <option value={3}>quantity</option>
+                  <select className="form-select" onChange={(e) => handleSortOptionChange(e.target.value)}>
+                    <option selected="" value="best-selling">Best Selling</option>
+                    <option value="price-asc">Price (Low to High)</option>
+                    <option value="price-desc">Price (High to Low)</option>
+                    <option value="name-asc">Name (A-Z)</option>
+                    <option value="name-desc">Name (Z-A)</option>
+                    <option value="newest">Newest</option>
+                    <option value="oldest">Oldest</option>
                   </select>
                 </div>
                 <div className="categories__filter-btn">
@@ -453,8 +182,8 @@ const CategoryPageTmpl = ({ category, products }) => {
                 </div>
               </div>
               <div className="categories__list">
-                {category.products.map((product) => (
-                  <div className="product__item">
+                {products.map((product) => (
+                  <div className="product__item" key={product.id}>
                     <div className="product__item--image">
                       <Link href={getProductPath(product.slug)}>
                         <img
@@ -466,19 +195,18 @@ const CategoryPageTmpl = ({ category, products }) => {
                           height={385}
                         />
                       </Link>
-                      <span className="badge badge-sale">Sale</span>
-                      <div className="product__item--wish">
-                        <span className="wish active">
-                          <img src="image/heart.svg" alt="" width={17} height={17} />
-                        </span>
-                      </div>
+                      {!!product.prices.old_min && (
+                        <span className="badge badge-sale">Sale</span>
+                      )}
                     </div>
                     <div className="product__item--name">
-                      <a href="#">T-Shirt Summer Vibes</a>
+                      <a href="#">{product.title}</a>
                     </div>
                     <div className="product__item--price">
-                      <span className="new-price">$89.99</span>
-                      <span className="old-price">$119.99</span>
+                      <span className="new-price">${product.prices.min}</span>
+                      {!!product.prices.old_min && (
+                        <span className="old-price">${product.prices.old_min}</span>
+                      )}
                     </div>
                   </div>
                 ))}
@@ -486,29 +214,25 @@ const CategoryPageTmpl = ({ category, products }) => {
               <div className="categories__pagination">
                 <ul className="pagination">
                   <li className="page-item page-prev">
-                    <a className="page-link" href="#">
-                      Previous
-                    </a>
+                    {page > 1 && (
+                      <a className="page-link" href="#" onClick={() => setPage(page - 1)}>
+                        Previous
+                      </a>
+                    )}
                   </li>
-                  <li className="page-item active" aria-current="page">
-                    <a className="page-link" href="#">
-                      1
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">
-                      2
-                    </a>
-                  </li>
-                  <li className="page-item">
-                    <a className="page-link" href="#">
-                      3
-                    </a>
-                  </li>
+                  {[...Array(numberOfPages).fill(0)].map((_, i) => (
+                    <li className={`page-item ${(i + 1) === page && 'active'}`} aria-current="page">
+                      <a className="page-link" href="#" onClick={() => setPage(i + 1)}>
+                        {i + 1}
+                      </a>
+                    </li>
+                  ))}
                   <li className="page-item page-next">
-                    <a className="page-link" href="#">
-                      Next
-                    </a>
+                    {page < numberOfPages && (
+                      <a className="page-link" href="#" onClick={() => setPage(page + 1)}>
+                        Next
+                      </a>
+                    )}
                   </li>
                 </ul>
               </div>
