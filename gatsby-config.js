@@ -6,7 +6,6 @@ require('dotenv').config({
 
 const plugins = [
   'gatsby-plugin-sass',
-  'gatsby-plugin-styled-components',
   'gatsby-plugin-react-helmet',
   {
     resolve: 'gatsby-plugin-static-folders',
@@ -23,8 +22,7 @@ const plugins = [
   },
   {
     resolve: 'gatsby-plugin-no-sourcemaps',
-  },
-  'gatsby-plugin-image',
+  }
 ]
 
 if (process.env.SENTRY_DSN) {
