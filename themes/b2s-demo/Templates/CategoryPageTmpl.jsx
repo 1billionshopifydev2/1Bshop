@@ -80,7 +80,7 @@ const CategoryPageTmpl = ({ category, products, productTypes, productOptions, ha
                 <div className="filter__head--title">Filters</div>
                 <div className="filter__filter-btn">
                   <span className="" open="" onclick="toggleFilters()">
-                    <img src="image/close.svg" alt="filters" />
+                    <img src="/images/close.svg" alt="filters" />
                   </span>
                 </div>
               </div>
@@ -177,7 +177,7 @@ const CategoryPageTmpl = ({ category, products, productTypes, productOptions, ha
                 </div>
                 <div className="categories__filter-btn">
                   <span className="open" onclick="toggleFilters()">
-                    <img src="image/filters.svg" alt="filters" />
+                    <img src="/images/filters.svg" alt="filters" />
                   </span>
                 </div>
               </div>

@@ -65,10 +65,10 @@
     redux-thunk "^2.3.0"
     url-parse "^1.5.10"
 
-"@b2storefront/b2s_core@^0.2.26":
-  version "0.2.26"
-  resolved "https://registry.yarnpkg.com/@b2storefront/b2s_core/-/b2s_core-0.2.26.tgz#27857446392297105bb7973bb3dafa16635f409b"
-  integrity sha512-/AqOKyOmsoPiovd6K2J1iCVRu3d0QN6Nwh6uR2sID5afDBqRonoeuycJK8Nx66B9eSSM1heYTXmLzg+BVxYdDg==
+"@b2storefront/b2s_core@^0.2.27":
+  version "0.2.27"
+  resolved "https://registry.yarnpkg.com/@b2storefront/b2s_core/-/b2s_core-0.2.27.tgz#a846f8bd1e800ce482b8d3e48a03af41e141e294"
+  integrity sha512-XqqnuH2KNBmIemI3NNJvJ9dzfcN3gX5pRim0vIqUv+x3wxsAgKwfJ8qrDVJuCKpnbA8Ep1HgiVbZOlfBfLO9IA==
   dependencies:
     "@babel/cli" "^7.18.6"
     "@babel/core" "^7.18.6"
@@ -3781,11 +3781,6 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001370, caniuse-lite@^1.0.30001373:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001374.tgz#3dab138e3f5485ba2e74bd13eca7fe1037ce6f57"
   integrity sha512-mWvzatRx3w+j5wx/mpFN5v5twlPrabG8NqX2c6e45LCpymdoGqNvRkRutFUqpRTXKFQFNQJasvK0YT7suW6/Hw==
 
-caniuse-lite@^1.0.30001370:
-  version "1.0.30001374"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001374.tgz#3dab138e3f5485ba2e74bd13eca7fe1037ce6f57"
-  integrity sha512-mWvzatRx3w+j5wx/mpFN5v5twlPrabG8NqX2c6e45LCpymdoGqNvRkRutFUqpRTXKFQFNQJasvK0YT7suW6/Hw==
-
 capital-case@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/capital-case/-/capital-case-1.0.4.tgz#9d130292353c9249f6b00fa5852bee38a717e669"
@@ -5879,6 +5874,13 @@ gatsby-plugin-gatsby-cloud@^4.20.0:
     lodash "^4.17.21"
     webpack-assets-manifest "^5.1.0"
 
+gatsby-plugin-newrelic@^2.2.2:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-newrelic/-/gatsby-plugin-newrelic-2.2.2.tgz#4d540d7fd827d103c3c222e4af8d3b85a1d53e5a"
+  integrity sha512-axMVeUig6PE/RN2qR4hT7/39NtNz+9by5hc4Php25N65zlLWYtuwqTtGpbeJUNyzh2PeqGEchN97nrT0KhEm4g==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+
 gatsby-plugin-no-sourcemaps@^4.20.0:
   version "4.20.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-no-sourcemaps/-/gatsby-plugin-no-sourcemaps-4.20.0.tgz#6088dd3c97929f406070946c9d0fd2e6d1ed268d"
@@ -6826,13 +6828,6 @@ is-ci@^2.0.0:
     ci-info "^2.0.0"
 
 is-core-module@^2.8.1, is-core-module@^2.9.0:
-  version "2.10.0"
-  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.10.0.tgz#9012ede0a91c69587e647514e1d5277019e728ed"
-  integrity sha512-Erxj2n/LDAZ7H8WNJXd9tw38GYM3dv8rk8Zcs+jJuxYTW7sozH+SS8NtrSjVL1/vpLvWi1hxy96IzjJ3EHTJJg==
-  dependencies:
-    has "^1.0.3"
-
-is-core-module@^2.9.0:
   version "2.10.0"
   resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.10.0.tgz#9012ede0a91c69587e647514e1d5277019e728ed"
   integrity sha512-Erxj2n/LDAZ7H8WNJXd9tw38GYM3dv8rk8Zcs+jJuxYTW7sozH+SS8NtrSjVL1/vpLvWi1hxy96IzjJ3EHTJJg==

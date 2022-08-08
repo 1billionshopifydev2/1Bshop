@@ -127,7 +127,7 @@ const ProductPageTmpl = (props) => {
                   </div>
                   <div className="product__info--wish">
                     <button className="btn btn-outline-secondary" type="button">
-                      <img src="image/heart.svg" alt="" width="17" height="17" />
+                      <img src="/images/heart.svg" alt="" width="17" height="17" />
                     </button>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const ProductPageTmpl = (props) => {
             <div className="desc-text">
               <p className="text-center">Body: 98% COTTON - 2% ELASTANE</p>
               <p className="text-center">
-                <img src="image/material.png" alt="care" width="215" height="28" />
+                <img src="/images/material.png" alt="care" width="215" height="28" />
               </p>
             </div>
           </div>
@@ -234,7 +234,7 @@ const ProductPageTmpl = (props) => {
           <div className="col-12 col-lg-6">
             <div className="review__item">
               <div className="review__item--img">
-                <img src="image/autor-1.png" alt="John Doe" />
+                <img src="/images/autor-1.png" alt="John Doe" />
               </div>
               <div className="review__item--text">
                 <div className="review__item--autor">John Doe</div>
@@ -250,7 +250,7 @@ const ProductPageTmpl = (props) => {
             </div>
             <div className="review__item">
               <div className="review__item--img">
-                <img src="image/autor-2.png" alt="Eveline Gosok" />
+                <img src="/images/autor-2.png" alt="Eveline Gosok" />
               </div>
               <div className="review__item--text">
                 <div className="review__item--autor">Eveline Gosok</div>
@@ -266,7 +266,7 @@ const ProductPageTmpl = (props) => {
             </div>
             <div className="review__item">
               <div className="review__item--img">
-                <img src="image/autor-3.png" alt="Anne Okombo" />
+                <img src="/images/autor-3.png" alt="Anne Okombo" />
               </div>
               <div className="review__item--text">
                 <div className="review__item--autor">Anne Okombo</div>
@@ -301,7 +301,7 @@ const ProductPageTmpl = (props) => {
                 <div className="swiper-slide product__item">
                   <div className="product__item--image">
                     <a href="#">
-                      <img src="image/item-1.webp" alt="T-Shirt Summer Vibes" width="272" height="385" />
+                      <img src="/images/item-1.webp" alt="T-Shirt Summer Vibes" width="272" height="385" />
                     </a>
                     <span className="badge badge-sale">Sale</span>
                   </div>
@@ -316,7 +316,7 @@ const ProductPageTmpl = (props) => {
                 <div className="swiper-slide product__item">
                   <div className="product__item--image">
                     <a href="#">
-                      <img src="image/item-2.webp" alt="Loose Knit 3/4 Sleeve" width="272" height="385" />
+                      <img src="/images/item-2.webp" alt="Loose Knit 3/4 Sleeve" width="272" height="385" />
                     </a>
                   </div>
                   <div className="product__item--name">
@@ -327,7 +327,7 @@ const ProductPageTmpl = (props) => {
                 <div className="swiper-slide product__item">
                   <div className="product__item--image">
                     <a href="#">
-                      <img src="image/item-3.webp" alt="Basic Slim Fit T-Shirt" width="272" height="385" />
+                      <img src="/images/item-3.webp" alt="Basic Slim Fit T-Shirt" width="272" height="385" />
                     </a>
                   </div>
                   <div className="product__item--name">
@@ -338,7 +338,7 @@ const ProductPageTmpl = (props) => {
                 <div className="swiper-slide product__item">
                   <div className="product__item--image">
                     <a href="#">
-                      <img src="image/item-4.webp" alt="Loose Textured T-Shirt" width="272" height="385" />
+                      <img src="/images/item-4.webp" alt="Loose Textured T-Shirt" width="272" height="385" />
                     </a>
                   </div>
                   <div className="product__item--name">
@@ -349,7 +349,7 @@ const ProductPageTmpl = (props) => {
                 <div className="swiper-slide product__item">
                   <div className="product__item--image">
                     <a href="#">
-                      <img src="image/item-5.webp" alt="Premium Dress Shirt" width="272" height="385" />
+                      <img src="/images/item-5.webp" alt="Premium Dress Shirt" width="272" height="385" />
                     </a>
                   </div>
                   <div className="product__item--name">

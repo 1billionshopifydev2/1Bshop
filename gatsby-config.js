@@ -10,7 +10,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-static-folders',
     options: {
-      folders: [`/@themes/${process.env.B2S_THEME_NAME}/Assets`],
+      folders: [`/themes/${process.env.B2S_THEME_NAME}/Assets`],
     },
   },
   '@b2storefront/gatsby-b2storefront-shopify',

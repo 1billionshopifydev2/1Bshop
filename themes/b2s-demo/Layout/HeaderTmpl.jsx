@@ -20,18 +20,18 @@ const HeaderTmpl = (props) => {
           <nav className="navbar navbar-expand-lg bg-light">
               <div className="container">
                   <a className="navbar-brand" href="#">
-                      <img src="image/logo.svg" alt="logo" width="138" height="35" />
+                      <img src="/images/logo.svg" alt="logo" width="138" height="35" />
                   </a>
                   <ul className="nav nav-icon">
                       <li className="nav-item">
-                          <a className="nav-link" href="#"><img src="image/search.svg" alt="Search" width="19" height="19" /></a>
+                          <a className="nav-link" href="#"><img src="/images/search.svg" alt="Search" width="19" height="19" /></a>
                       </li>                        
                       <li className="nav-item">
-                        <a className="nav-link" href={props.cart ? props.cart.webUrl : '#'}><img src="image/cart.svg" alt="Shopping Cart" width="19" height="19" /></a>
+                        <a className="nav-link" href={props.cart ? props.cart.webUrl : '#'}><img src="/images/cart.svg" alt="Shopping Cart" width="19" height="19" /></a>
                         ({props.cart?.lineItems?.length})
                       </li>
                       <li className="nav-item">
-                        <a className="nav-link" href="#"><img src="image/avatar.svg" alt="Account" width="19" height="19" /></a>
+                        <a className="nav-link" href="#"><img src="/images/avatar.svg" alt="Account" width="19" height="19" /></a>
                       </li>
                   </ul>                     
                   <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu" aria-controls="navbarMenu" aria-expanded="false" aria-label="Toggle navigation">

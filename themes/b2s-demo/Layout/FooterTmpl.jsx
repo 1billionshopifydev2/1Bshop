@@ -13,18 +13,18 @@ const FooterTmpl = () => {
                 <div className="col-12 col-md-12 col-lg-6 footer__about">
                     <div className="footer__logo">
                         <a href="#">
-                            <img src="image/logo.svg" alt="logo" width="138" height="35" />
+                            <img src="/images/logo.svg" alt="logo" width="138" height="35" />
                         </a>
                     </div>
                     <div className="footer__about-desc">
                         House My Brand designs clothing for the young, the old & everyone in between – but most importantly, for the fashionable
                     </div>
                     <ul className="list-unstyled footer__socials">
-                        <li><a href="#"><img src="image/fb.svg" alt="facebook" target="new" width="10" height="18" /></a></li>
-                        <li><a href="#" target="new"><img src="image/twiter.svg" alt="" target="new" width="20" height="16" /></a></li>
-                        <li><a href="#" target="new"><img src="image/linkedIn.svg" alt="" target="new" width="17" height="15" /></a></li>
-                        <li><a href="#" target="new"><img src="image/instagram.svg" alt="" target="new" width="18" height="18" /></a></li>
-                        <li><a href="#" target="new"><img src="image/youtube.svg" alt="" target="new" width="20" height="14" /></a></li>
+                        <li><a href="#"><img src="/images/fb.svg" alt="facebook" target="new" width="10" height="18" /></a></li>
+                        <li><a href="#" target="new"><img src="/images/twiter.svg" alt="" target="new" width="20" height="16" /></a></li>
+                        <li><a href="#" target="new"><img src="/images/linkedIn.svg" alt="" target="new" width="17" height="15" /></a></li>
+                        <li><a href="#" target="new"><img src="/images/instagram.svg" alt="" target="new" width="18" height="18" /></a></li>
+                        <li><a href="#" target="new"><img src="/images/youtube.svg" alt="" target="new" width="20" height="14" /></a></li>
                     </ul>
                 </div>
                 <div className="col-12 col-md-4 col-lg-2 footer__nav">

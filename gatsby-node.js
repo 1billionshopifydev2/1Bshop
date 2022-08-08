@@ -26,6 +26,15 @@ exports.createPages = async ({ cache, actions, reporter }) => {
         },
       })
     }
+
+    createPage({
+      path: '/',
+      component: path.resolve('./src/components/Templates/HomePage.js'),
+      context: {
+        allCollections,
+        allProducts,
+      }
+    })
   }
 }
 
