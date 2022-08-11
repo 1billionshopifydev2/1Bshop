@@ -13,6 +13,7 @@ exports.createPages = async ({ cache, actions, reporter }) => {
         component: path.resolve('./src/components/Templates/ProductPage.js'),
         context: {
           product,
+          productId: product.id,
         },
       })
     }
