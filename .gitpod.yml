@@ -1,6 +1,6 @@
 tasks:
-  - init: nvm install 16.15 && nvm use 16.15 && npm adduser && yarn install && yarn preview
-    command: nvm install 16.15 && nvm use 16.15 && yarn install && yarn preview
+  - init: nvm install 16.15 && nvm use 16.15 && npm adduser && yarn install && yarn develop
+    command: nvm install 16.15 && nvm use 16.15 && yarn install && yarn develop
 vscode:
   extensions:
     - GraphQL.vscode-graphql

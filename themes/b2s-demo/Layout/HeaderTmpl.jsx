@@ -1,5 +1,6 @@
 import React from 'react'
 import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustomJavascript'
+import { Link } from 'gatsby'
 
 const HeaderTmpl = (props) => {
   useCustomJavascript(() => {
@@ -19,9 +20,9 @@ const HeaderTmpl = (props) => {
       <div className="header__middle">
           <nav className="navbar navbar-expand-lg bg-light">
               <div className="container">
-                  <a className="navbar-brand" href="#">
+                  <Link className="navbar-brand" to="/">
                       <img src="/images/logo.svg" alt="logo" width="138" height="35" />
-                  </a>
+                  </Link>
                   <ul className="nav nav-icon">
                       <li className="nav-item">
                           <a className="nav-link" href="#"><img src="/images/search.svg" alt="Search" width="19" height="19" /></a>

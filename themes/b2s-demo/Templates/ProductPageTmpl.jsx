@@ -7,6 +7,8 @@ import { JSONLD } from '@b2storefront/b2s_core/dist/components/snippets/JSONLD'
 import { ProductType } from '@b2storefront/b2s_core/dist/types/product'
 import { ProductVariantType } from '@b2storefront/b2s_core/dist/types/product-variant'
 import { func, number } from 'prop-types'
+import { getProductPath, getCategoryPath } from '@b2storefront/b2s_core/dist/utils/routing'
+import { Link } from 'gatsby'
 
 /**
  * @param {ProductPageTmpl.propTypes} props
@@ -291,78 +293,41 @@ const ProductPageTmpl = (props) => {
             <div className="product__list--head">
               <h2 className="product__list--title">Selected just for you</h2>
               <div className="product__list--more">
-                <button className="btn btn-outline-secondary" type="button">
+                <a href={getCategoryPath(props.category.slug)} className="btn btn-outline-secondary">
                   Show more
-                </button>
+                </a>
               </div>
             </div>
-            <div className="swiper product__list">
-              <div className="swiper-wrapper">
-                <div className="swiper-slide product__item">
-                  <div className="product__item--image">
-                    <a href="#">
-                      <img src="/images/item-1.webp" alt="T-Shirt Summer Vibes" width="272" height="385" />
-                    </a>
+            <div className="categories__list">
+            {props.category.products.slice(0, 3).map((product) => (
+              <div className="product__item" key={product.id}>
+                <div className="product__item--image">
+                  <Link href={getProductPath(product.slug)}>
+                    <img
+                      src={product.featured_image.url}
+                      data-src={product.featured_image.url}
+                      className="lazy"
+                      alt={product.title}
+                      width={272}
+                      height={385}
+                    />
+                  </Link>
+                  {!!product.prices.old_min && (
                     <span className="badge badge-sale">Sale</span>
-                  </div>
-                  <div className="product__item--name">
-                    <a href="#">T-Shirt Summer Vibes</a>
-                  </div>
-                  <div className="product__item--price">
-                    <span className="new-price">$89.99</span>
-                    <span className="old-price">$119.99</span>
-                  </div>
+                  )}
                 </div>
-                <div className="swiper-slide product__item">
-                  <div className="product__item--image">
-                    <a href="#">
-                      <img src="/images/item-2.webp" alt="Loose Knit 3/4 Sleeve" width="272" height="385" />
-                    </a>
-                  </div>
-                  <div className="product__item--name">
-                    <a href="#">Loose Knit 3/4 Sleeve</a>
-                  </div>
-                  <div className="product__item--price">$119.99</div>
+                <div className="product__item--name">
+                  <a href={getProductPath(product.slug)}>{product.title}</a>
                 </div>
-                <div className="swiper-slide product__item">
-                  <div className="product__item--image">
-                    <a href="#">
-                      <img src="/images/item-3.webp" alt="Basic Slim Fit T-Shirt" width="272" height="385" />
-                    </a>
-                  </div>
-                  <div className="product__item--name">
-                    <a href="#">Basic Slim Fit T-Shirt</a>
-                  </div>
-                  <div className="product__item--price">$79.99</div>
-                </div>
-                <div className="swiper-slide product__item">
-                  <div className="product__item--image">
-                    <a href="#">
-                      <img src="/images/item-4.webp" alt="Loose Textured T-Shirt" width="272" height="385" />
-                    </a>
-                  </div>
-                  <div className="product__item--name">
-                    <a href="#">Loose Textured T-Shirt</a>
-                  </div>
-                  <div className="product__item--price">$119.99</div>
-                </div>
-                <div className="swiper-slide product__item">
-                  <div className="product__item--image">
-                    <a href="#">
-                      <img src="/images/item-5.webp" alt="Premium Dress Shirt" width="272" height="385" />
-                    </a>
-                  </div>
-                  <div className="product__item--name">
-                    <a href="#">Premium Dress Shirt</a>
-                  </div>
-                  <div className="product__item--price">$119.99</div>
+                <div className="product__item--price">
+                  <span className="new-price">${product.prices.min}</span>
+                  {!!product.prices.old_min && (
+                    <span className="old-price">${product.prices.old_min}</span>
+                  )}
                 </div>
               </div>
-            </div>
-            <div className="product__list--navigation">
-              <span className="product__list--navigation-prev"></span>
-              <span className="product__list--navigation-next"></span>
-            </div>
+            ))}
+          </div>
           </div>
 
           <div className="sibscribe">

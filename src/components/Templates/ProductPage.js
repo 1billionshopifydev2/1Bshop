@@ -15,7 +15,7 @@ const ProductDetailsPage = ({ location, data, pageContext }) => {
   })
 
   ownProps.dispatch = dispatch
-  ownProps.category = data.moreProductsByCollection?.products ?? []
+  ownProps.category = data.moreProductsByCollection
 
   useDebug('ProductPageTmpl properties:', ownProps)
 
