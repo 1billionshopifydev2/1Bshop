@@ -92,6 +92,15 @@
     shopify-buy "^2.16.1"
     url-parse "^1.5.10"
 
+"@b2storefront/b2storefront-telemetry@^0.1.0":
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/@b2storefront/b2storefront-telemetry/-/b2storefront-telemetry-0.1.11.tgz#3933e38f87c81c1f4e5f058f71eaf1090bb23afd"
+  integrity sha512-Xa3eZLLzjk0hwBMtK4aSAtuHaYkM0sEx7vxDtQxRENsXp5M4rGz6B3j7Kp9JpfdfFmgHUU6U7VzMDT+ehTllew==
+  dependencies:
+    dotenv "^16.0.1"
+    git-user-email "^0.2.2"
+    newrelic "^9.0.0"
+
 "@b2storefront/gatsby-b2storefront-shopify@^0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@b2storefront/gatsby-b2storefront-shopify/-/gatsby-b2storefront-shopify-0.0.6.tgz#9f7fb179ad69af9eff95a39b7a12a1fdb456588d"

@@ -14,6 +14,7 @@ const plugins = [
     },
   },
   '@b2storefront/gatsby-b2storefront-shopify',
+  '@b2storefront/b2storefront-telemetry',
   {
     resolve: 'gatsby-plugin-root-import',
     options: {
