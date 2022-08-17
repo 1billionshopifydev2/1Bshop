@@ -12,7 +12,7 @@ const ProductDetailsPage = ({ location, data, pageContext }) => {
   const ownProps = useProductDetailsCore({
     location,
     product: pageContext.product,
-  })
+  }) 
 
   ownProps.dispatch = dispatch
   ownProps.category = data.moreProductsByCollection
