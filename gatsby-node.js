@@ -3,8 +3,24 @@ const newrelic = require('newrelic')
 const email = require('git-user-email')
 const { getData } = require('@b2storefront/gatsby-b2storefront-shopify/requests')
 const util = require('util');
-const { default: axios } = require('axios');
 const exec = util.promisify(require('child_process').exec);
+const package = require('./package.json')
+
+const getIdentifyData = async () => ({
+  repository: await gitRemoteOriginUrl(),
+  project: getProjectName(),
+  email: await getUserEmail(),
+})
+
+const gitRemoteOriginUrl = async () => {
+  const { stdout } = await exec("git config remote.origin.url")
+
+  return stdout
+}
+
+const getProjectName = () => {
+  return package.name
+}
 
 const getUserEmail = async () => {
   if (email()) {
@@ -22,7 +38,7 @@ exports.onPreInit = async ({ actions }) => {
   hrstart = process.hrtime()
 
   newrelic.recordCustomEvent('BuildStarted', {
-    email: await getUserEmail(),
+    ...await getIdentifyData()
   })
 }
 
@@ -30,7 +46,7 @@ exports.onPostBootstrap = async ({ actions }) => {
   let hrend = process.hrtime(hrstart)
 
   newrelic.recordCustomEvent('BuildFinished', {
-    email: await getUserEmail(),
+    ...await getIdentifyData(),
     duration: hrend[0]
   })
 }
@@ -38,7 +54,8 @@ exports.onPostBootstrap = async ({ actions }) => {
 exports.onCreateDevServer = async ({ app }) => {
   app.use(async (req, res, next) => {
     newrelic.recordCustomEvent('Activity', {
-      email: await getUserEmail(),
+      ...await getIdentifyData(),
+      path: req.path,
     })
 
     next()
