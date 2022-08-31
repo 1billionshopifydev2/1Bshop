@@ -24,10 +24,21 @@ const HomePageTmpl = ({ allCollections, allProducts, collections, products }) =>
       />
       <section className="section section-home-page">
         <div className="container">
-          <h1 className="text-center">New Arrivals</h1>
+          <div>
+            <h1>Product of the week</h1>
+            <div>
+              <Link to={getProductPath(products['adidas-classic-backpack'].slug)}>
+                {products['adidas-classic-backpack'].title}
+              </Link>
+              <img src={products['adidas-classic-backpack'].featured_image.url}></img>
+              {products['adidas-classic-backpack'].description}
+              {products['adidas-classic-backpack'].prices.min}
+            </div>
+          </div>
+          <h1 className="text-center">{collections['sale'].title}</h1>
           <p className="text-center mb-5">See our newest products, just arrived to our online store!</p>
           <div className="categories__list">
-            {collections['new-arrivals'].products.map((product) => (
+            {collections['sale'].products.map((product) => (
               <div className="product__item" key={product.id}>
                 <div className="product__item--image">
                   <Link href={getProductPath(product.slug)}>
