@@ -36,7 +36,7 @@ const HomePageTmpl = ({ allCollections, allProducts, collections, products }) =>
             </div>
           </div>
           <h1 className="text-center">{collections['sale'].title}</h1>
-          <p className="text-center mb-5">See our newest products, just arrived to our online store!</p>
+          <p className="text-center mb-5">See our best selling products NOW</p>
           <div className="categories__list">
             {collections['sale'].products.map((product) => (
               <div className="product__item" key={product.id}>
