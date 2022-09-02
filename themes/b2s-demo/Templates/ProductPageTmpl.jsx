@@ -23,7 +23,7 @@ const ProductPageTmpl = (props) => {
       <SEO title={props.product.seo.title} description={props.product.seo.description} />
       <JSONLD type="product" data={props.product} />
       <AddToHead>
-
+        <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/OXOlHnuPCTzwvhTN8NGnq0EuzfXyUg1BtVYjPjKy" async></script>
       </AddToHead>
       <main className="main">
         <div className="container">
@@ -204,16 +204,25 @@ const ProductPageTmpl = (props) => {
         <div className='row'>
           <div className='col-12'>
             <h2>Reviews</h2>
-            <div 
-              className="yotpo-widget-instance" 
+            <div dangerouslySetInnerHTML={{__html:`
+
+              <div 
+              class="yotpo-widget-instance" 
               data-yotpo-instance-id="227728" 
-              data-yotpo-product-id={props.product.id}
-              data-yotpo-name={props.product.title}
-              data-yotpo-url={`https://wip1bshop.b2s.app/${getProductPath(props.product.slug)}`} 
-              data-yotpo-image-url={props.product.featured_image.url} 
-              data-yotpo-description={props.product.description}>
-              
+              data-yotpo-product-id="${props.product.id}"
+              data-yotpo-name="${props.product.title}"
+              data-yotpo-url="https://wip1bshop.b2s.app/${getProductPath(props.product.slug)}"
+              data-yotpo-image-url="${props.product.featured_image.url}"
+              data-yotpo-description="${props.product.description}">
+
               </div>
+            
+            `}}>
+
+            </div>
+
+            
+
           </div>
         </div>
       </div>
@@ -405,7 +414,6 @@ export const ProductHeadScripts = ({ product }) => (
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.min.css"/>
-  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/OXOlHnuPCTzwvhTN8NGnq0EuzfXyUg1BtVYjPjKy" async></script>
   </>
 )
 
