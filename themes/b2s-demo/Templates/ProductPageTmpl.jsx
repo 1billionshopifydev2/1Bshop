@@ -15,7 +15,7 @@ import { Link } from 'gatsby'
  **/
 const ProductPageTmpl = (props) => {
   useCustomJavascript(() => {
-
+    new Glide('.glide').mount();
   })
 
   return (
@@ -47,8 +47,29 @@ const ProductPageTmpl = (props) => {
           <div className="product">
             <div className="row">
               <div className="col-12 col-lg-6 product__images">
-                <img src={props.selectedVariant.image.url || props.product.featured_image.url} alt={props.selectedVariant.title} />
-              </div >
+                <div class="glide">
+                  <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                      {props.product.images.map(image=>(
+                        <li class="glide__slide" key={image.url}>
+                          <img src={image.url} alt={props.selectedVariant.title} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                  </div>
+                  <div class="glide__bullets" data-glide-el="controls[nav]">
+                      {props.product.images.map((image,i)=>(
+                          <div data-glide-dir={`=${i}`} key={image.url}>
+                            <img src={image.url} alt={props.selectedVariant.title} />
+                          </div>
+                      ))}
+                  </div>
+                </div>
+              </div>
               <div className="col-12 col-lg-6 product__info">
                 <div className="product__info--shipping">
                   <div className="product__info--shipping-item standart">
@@ -62,7 +83,9 @@ const ProductPageTmpl = (props) => {
                 </div>
                 <div className="row align-items-center">
                   <div className="col">
-                    <span className="badge badge-sale">Sale</span>
+                    {!!props.selectedVariant.old_price && (
+                      <span className="badge badge-sale">SSSSSALE</span>
+                    )}
                   </div>
                   <div className="col">
                     <div className="product__info--model">
@@ -79,7 +102,19 @@ const ProductPageTmpl = (props) => {
                       <span className="old-price">${props.selectedVariant.old_price}</span>
                     )}
                   </div>
-                  <div className="col product__info--manufacturer">House my Brand</div>
+                  <div className="col product__info--manufacturer">
+
+                    {props.product.vendor === "ADIDAS" && (
+                      <span className="badge badge-sale">SUCCESS</span>
+                    )}
+
+                    {props.product.vendor !== "ADIDAS" && (
+                      <span className="badge badge-sale">JUST DO IT</span>
+                    )}
+                    
+                    
+                    
+                    {props.product.vendor}</div>
                 </div>
                 <div className="product__info--options">
                   {props.product.options.map(option => (
@@ -154,19 +189,31 @@ const ProductPageTmpl = (props) => {
         <div className="row">
           <div className="col-12 col-lg-7 desc-details">
             <div className="desc-title">Details and product description</div>
-            <div className="desc-text">
-              <p>White Summer Vibes T-shirt in the uiKit line with a colorful print.</p>
-              <p>Made of jersey cotton. T-shirt fits perfectly with jeans, pants or shorts.</p>
-            </div>
+            <div className="desc-text" dangerouslySetInnerHTML={{__html:props.product.description}}/>
           </div>
           <div className="col-12 col-lg-5 desc-materials">
             <div className="desc-title">Material(s) and care</div>
             <div className="desc-text">
-              <p className="text-center">Body: 98% COTTON - 2% ELASTANE</p>
+              <p className="text-center">Body: {props.product.metafields.material}</p>
               <p className="text-center">
                 <img src="/images/material.png" alt="care" width="215" height="28" />
               </p>
             </div>
+          </div>
+        </div>
+        <div className='row'>
+          <div className='col-12'>
+            <h2>Reviews</h2>
+            <div 
+              className="yotpo-widget-instance" 
+              data-yotpo-instance-id="227728" 
+              data-yotpo-product-id={props.product.id}
+              data-yotpo-name={props.product.title}
+              data-yotpo-url={`https://wip1bshop.b2s.app/${getProductPath(props.product.slug)}`} 
+              data-yotpo-image-url={props.product.featured_image.url} 
+              data-yotpo-description={props.product.description}>
+              
+              </div>
           </div>
         </div>
       </div>
@@ -355,7 +402,10 @@ const ProductPageTmpl = (props) => {
 
 export const ProductHeadScripts = ({ product }) => (
   <>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.min.css"/>
+  <script src="https://cdn-widgetsrepository.yotpo.com/v1/loader/OXOlHnuPCTzwvhTN8NGnq0EuzfXyUg1BtVYjPjKy" async></script>
   </>
 )
 
