@@ -26,7 +26,7 @@ export default function HTML(props) {
         fbq('init', '758522132039061');
         fbq('track', 'PageView');`}}>
         </script>
-        <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=758522132039061&ev=PageView&noscript=1"
+        <noscript><img height="1" width="1" style={{"display":"none"}} src="https://www.facebook.com/tr?id=758522132039061&ev=PageView&noscript=1"
 /></noscript>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
