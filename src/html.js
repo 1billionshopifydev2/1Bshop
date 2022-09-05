@@ -37,6 +37,7 @@ export default function HTML(props) {
         {props.headComponents}
         <ProductHeadScripts />
         <CategoryHeadScripts />
+        <script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=97ab389e"></script>
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
