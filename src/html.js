@@ -7,6 +7,7 @@ export default function HTML(props) {
   return (
     <html lang="en" dir="ltr" {...props.htmlAttributes}>
       <head>
+        <meta name="google-site-verification" content="alqGk8Qyc1MpyUTmvN2nKWXjXXf3U6DfBeofCKKazt4" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC5S5345GY"></script>
         <script dangerouslySetInnerHTML={{ __html:`window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
