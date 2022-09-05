@@ -7,6 +7,12 @@ export default function HTML(props) {
   return (
     <html lang="en" dir="ltr" {...props.htmlAttributes}>
       <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-TC5S5345GY"></script>
+        <script dangerouslySetInnerHTML={{ __html:`window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-TC5S5345GY');`}}>
+        </script>
         <meta charSet="utf-8" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <meta
