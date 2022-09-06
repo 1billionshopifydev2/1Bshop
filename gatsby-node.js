@@ -1,5 +1,6 @@
 const path = require('path')
 const { getData } = require('@b2storefront/gatsby-b2storefront-shopify/requests')
+const { getPagesWithMetafields } = require('@b2storefront/gatsby-b2storefront-shopify/utils')
 
 exports.createPages = async ({ cache, actions, reporter }) => {
   const { createPage } = actions
@@ -36,6 +37,20 @@ exports.createPages = async ({ cache, actions, reporter }) => {
         allProducts,
       }
     })
+
+    const pages = await getPagesWithMetafields()
+
+    for (let page of pages) {
+      createPage({
+        path: `/pages/${page.handle}`,
+        component: path.resolve('./src/components/Templates/StaticPage.js'),
+        context: {
+          allCollections,
+          allProducts,
+          page,
+        }
+      })
+    }
   }
 }
 
