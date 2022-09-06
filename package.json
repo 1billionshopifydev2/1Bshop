@@ -8,9 +8,9 @@
     "node": ">=16"
   },
   "dependencies": {
-    "@b2storefront/b2s_core": "^0.2.30",
+    "@b2storefront/b2s_core": "^0.2.31",
     "@b2storefront/b2storefront-telemetry": "^0.1.0",
-    "@b2storefront/gatsby-b2storefront-shopify": "^0.0.7",
+    "@b2storefront/gatsby-b2storefront-shopify": "^0.0.9",
     "@sentry/gatsby": "^7.9.0",
     "axios": "^0.21.1",
     "cross-env": "^7.0.3",
