@@ -15,11 +15,7 @@ import { Link } from 'gatsby'
  **/
 const ProductPageTmpl = (props) => {
   useCustomJavascript(() => {
-<<<<<<< HEAD
     new Glide('.glide').mount();
-=======
-    new Glide('.glide').mount()
->>>>>>> fb6f5733588e44981db1ab02247662ea6be0d577
   })
 
   return (
