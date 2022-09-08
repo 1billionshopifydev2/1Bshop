@@ -12,6 +12,8 @@ const ProductDetailsPage = ({ location, data, pageContext }) => {
   const ownProps = useProductDetailsCore({
     location,
     product: pageContext.product,
+    allProducts: pageContext.allProducts,
+    allCollections: pageContext.allCollections,
   }) 
 
   ownProps.dispatch = dispatch
