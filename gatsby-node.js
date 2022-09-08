@@ -13,6 +13,8 @@ exports.createPages = async ({ cache, actions, reporter }) => {
         path: `/products/${product.slug}`,
         component: path.resolve('./src/components/Templates/ProductPage.js'),
         context: {
+          allCollections,
+          allProducts,
           product,
           productId: product.id,
         },
@@ -24,6 +26,8 @@ exports.createPages = async ({ cache, actions, reporter }) => {
         path: `/collections/${collection.slug}`,
         component: path.resolve('./src/components/Templates/CategoryPage.js'),
         context: {
+          allCollections,
+          allProducts,
           collection,
         },
       })
