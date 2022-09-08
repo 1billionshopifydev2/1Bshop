@@ -6,6 +6,7 @@ import { getProductPath } from '@b2storefront/b2s_core/dist/utils/routing'
 import { Link } from 'gatsby'
 import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustomJavascript'
 import ProductCard from '../../../src/components/Snippets/ProductCard'
+import '../Assets/styles/collection.scss'
 
 /** 
  * @param {CategoryPageTmpl.propTypes} props
@@ -72,6 +73,9 @@ const CategoryPageTmpl = ({ category, products, productTypes, productOptions, ha
               </li>
               <li className="breadcrumb-item active" aria-current="page">
                 {category.title}
+                {category.template === "specialcollection" && (
+                  <span className='label'>SPECIAL EDITION</span>
+                )}
               </li>
             </ol>
           </nav>

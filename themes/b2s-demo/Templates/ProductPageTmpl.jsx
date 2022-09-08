@@ -9,14 +9,42 @@ import { ProductVariantType } from '@b2storefront/b2s_core/dist/types/product-va
 import { func, number } from 'prop-types'
 import { getProductPath, getCategoryPath } from '@b2storefront/b2s_core/dist/utils/routing'
 import { Link } from 'gatsby'
+import {convertIDToNumber} from '@b2storefront/b2s_core/dist/data/transformers/shopify.js'
+import ProductCard from '../../../src/components/Snippets/ProductCard'
 
 /**
  * @param {ProductPageTmpl.propTypes} props
  **/
 const ProductPageTmpl = (props) => {
+
   useCustomJavascript(() => {
     new Glide('.glide').mount();
+    MicroModal.init();
   })
+
+  let upsell_products_bucket = [];
+
+if(props.product.metafields["custom.upsell_for_product"]?.value){
+  const upsell_product_ids = JSON.parse(props.product.metafields["custom.upsell_for_product"]?.value).map(item => {
+    return convertIDToNumber(item)
+  });
+
+  for(let item of props.allProducts){
+    if(upsell_product_ids.includes(item.id)){
+      upsell_products_bucket.push(item);
+    }
+  }
+}
+  
+
+  function handleATCButtonClassic(){
+
+    props.handleAddToCart(props.dispatch, props.selectedVariant.id, props.quantity);
+    alert("AAAA");
+
+  }
+
+  console.log(upsell_products_bucket);
 
   return (
     <Layout>
@@ -27,22 +55,31 @@ const ProductPageTmpl = (props) => {
       </AddToHead>
       <main className="main">
         <div className="container">
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item breadcrumb-item--home">
-                <a href="#">Home</a>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">Men`s Tops</a>
-              </li>
-              <li className="breadcrumb-item">
-                <a href="#">T-Shirt</a>
-              </li>
-              <li className="breadcrumb-item active" aria-current="page">
-                T-Shirt Summer Vibes
-              </li>
-            </ol>
-          </nav>
+          {props.product.template !== "specialdrop" && (
+
+<nav aria-label="breadcrumb">
+<ol className="breadcrumb">
+  <li className="breadcrumb-item breadcrumb-item--home">
+    <a href="#">Home</a>
+  </li>
+  <li className="breadcrumb-item">
+    <a href="#">Men`s Tops</a>
+  </li>
+  <li className="breadcrumb-item">
+    <a href="#">T-Shirt</a>
+  </li>
+  <li className="breadcrumb-item active" aria-current="page">
+    T-Shirt Summer Vibes
+  </li>
+</ol>
+</nav>
+
+          )}
+{props.product.template === "specialdrop" && (
+  <div style={{backgroundColor:"red"}}>Super DROPPPPPPP</div>
+)}
+
+          
 
           <div className="product">
             <div className="row">
@@ -158,7 +195,7 @@ const ProductPageTmpl = (props) => {
                     </div>
                   </div>
                   <div className="product__info--buy">
-                    <button className="btn btn-primary" type="button" onClick={() => props.handleAddToCart(props.dispatch, props.selectedVariant.id, props.quantity)}>
+                    <button className="btn btn-primary" type="button" data-micromodal-trigger="modal-1" onClick={handleATCButtonClassic}>
                       Add to cart
                     </button>
                   </div>
@@ -405,6 +442,29 @@ const ProductPageTmpl = (props) => {
           </div>
         </div >
       </main >
+      <div className="modal micromodal-slide" id="modal-1" aria-hidden="true">
+    <div className="modal__overlay" tabindex="-1" data-micromodal-close>
+      <div className="modal__container" role="dialog" aria-modal="true" aria-labelledby="modal-1-title">
+        <header className="modal__header">
+          <h2 className="modal__title" id="modal-1-title">
+            Customers also wanted to buy those:
+          </h2>
+          <button className="modal__close" aria-label="Close modal" data-micromodal-close></button>
+        </header>
+        <main className="modal__content" id="modal-1-content">
+          <p>
+          {upsell_products_bucket.map((product) => (
+                      <ProductCard product={product} parent="UpsellContainer"/>
+                    ))}
+          </p>
+        </main>
+        <footer className="modal__footer">
+          <button className="modal__btn modal__btn-primary">Continue</button>
+          <button className="modal__btn" data-micromodal-close aria-label="Close this dialog window">Close</button>
+        </footer>
+      </div>
+    </div>
+  </div>
     </Layout >
   )
 }
@@ -414,6 +474,7 @@ export const ProductHeadScripts = ({ product }) => (
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.theme.min.css"/>
+  <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
   </>
 )
 
