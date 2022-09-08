@@ -7,6 +7,7 @@ import { useCustomJavascript } from '@b2storefront/b2s_core/dist/hooks/useCustom
 import { arrayOf } from 'prop-types'
 import { ProductType } from '@b2storefront/b2s_core/dist/types/product'
 import { getProductPath } from '@b2storefront/b2s_core/dist/utils/routing'
+import ProductCard from '../../../src/components/Snippets/ProductCard'
 
 /** 
  * @param {HomePageTmpl.propTypes} props
@@ -39,32 +40,7 @@ const HomePageTmpl = ({ allCollections, allProducts, collections, products }) =>
           <p className="text-center mb-5">See our best selling products NOW</p>
           <div className="categories__list">
             {collections['sale'].products.map((product) => (
-              <div className="product__item" key={product.id}>
-                <div className="product__item--image">
-                  <Link href={getProductPath(product.slug)}>
-                    <img
-                      src={product.featured_image.url}
-                      data-src={product.featured_image.url}
-                      className="lazy"
-                      alt={product.title}
-                      width={272}
-                      height={385}
-                    />
-                  </Link>
-                  {!!product.prices.old_min && (
-                    <span className="badge badge-sale">Sale</span>
-                  )}
-                </div>
-                <div className="product__item--name">
-                  <a href="#">{product.title}</a>
-                </div>
-                <div className="product__item--price">
-                  <span className="new-price">${product.prices.min}</span>
-                  {!!product.prices.old_min && (
-                    <span className="old-price">${product.prices.old_min}</span>
-                  )}
-                </div>
-              </div>
+              <ProductCard product={product} parent="HomePage"/>
             ))}
           </div>
         </div>

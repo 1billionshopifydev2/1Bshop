@@ -10,9 +10,9 @@ import { PageType } from '@b2storefront/b2s_core/dist/types/page'
 import { getProductPath } from '@b2storefront/b2s_core/dist/utils/routing'
 
 /** 
- * @param {StaticPageTmpl.propTypes} props
+ * @param {BrandPageTmpl.propTypes} props
  **/
-const StaticPageTmpl = ({ allCollections, allProducts, collections, products, page }) => {
+const BrandPageTmpl = ({ allCollections, allProducts, collections, products, page }) => {
   useCustomJavascript(() => {
     
   })
@@ -25,10 +25,10 @@ const StaticPageTmpl = ({ allCollections, allProducts, collections, products, pa
       />
       <section className="section section-home-page">
         <div className="container">
-          <h1 className="text-center">{page.title}</h1>
+          <h1 className="text-center">Brand Page{page.title}</h1>
           <div dangerouslySetInnerHTML={{__html: page.content}}></div>
 
-          {page.metafields["b2s.shoppable_content"]?.value && (
+          {page.metafields["b2s.shoppable_content"].value && (
             <div>
               <h3>Adidas products</h3>
               {(page.metafields["b2s.assigned_collection"] && collections[page.metafields["b2s.assigned_collection"].value])&&(
@@ -74,10 +74,10 @@ const StaticPageTmpl = ({ allCollections, allProducts, collections, products, pa
   )
 }
 
-StaticPageTmpl.propTypes = {
+BrandPageTmpl.propTypes = {
   collections: arrayOf(CategoryType),
   products: arrayOf(ProductType),
   page: PageType,
 }
 
-export default StaticPageTmpl
+export default BrandPageTmpl

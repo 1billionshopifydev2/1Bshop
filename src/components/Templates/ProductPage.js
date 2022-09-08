@@ -12,12 +12,15 @@ const ProductDetailsPage = ({ location, data, pageContext }) => {
   const ownProps = useProductDetailsCore({
     location,
     product: pageContext.product,
+    allCollections: pageContext.allCollections,
+    allProducts: pageContext.allProducts,
   }) 
 
   ownProps.dispatch = dispatch
   ownProps.category = data.moreProductsByCollection
   ownProps.product.metafields = {
-    material: "90% COTTON - 10% ELASTANE"
+    material: "90% COTTON - 10% ELASTANE",
+    
   }
 
   useDebug('ProductPageTmpl properties:', ownProps)

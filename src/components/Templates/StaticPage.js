@@ -5,6 +5,7 @@ import useDebug from '@b2storefront/b2s_core/dist/hooks/useDebug'
 import { useDispatch } from 'react-redux'
 
 const StaticPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/StaticPageTmpl`).default
+const BrandPageTmpl = require(`@themes/${process.env.B2S_THEME_NAME}/Templates/BrandPageTmpl`).default
 
 const StaticPage = ({ location, data, pageContext }) => {
   const dispatch = useDispatch()
@@ -18,8 +19,12 @@ const StaticPage = ({ location, data, pageContext }) => {
   ownProps.dispatch = dispatch
 
   useDebug('StaticPageTmpl properties:', ownProps)
-
-  return <StaticPageTmpl {...ownProps} />
+  
+ if(ownProps.page.template === "brand"){
+  return <BrandPageTmpl {...ownProps} />
+ }
+ return <StaticPageTmpl {...ownProps} />
+  
 }
 
 StaticPage.propTypes = {
